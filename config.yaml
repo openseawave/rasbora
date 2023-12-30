@@ -1,0 +1,147 @@
+# Logging configuration
+Logger:
+  # Unique identifier for the logger
+  UniqueID: "dell-2u-logger1"
+  # Log levels: success=1, info=2, warn=3, errors=4, debug=5
+  Level: [ 1, 2, 3, 4, 5 ]
+  # Available output types [stdout, database, file]
+  Output: ["stdout", "database", "file"]
+
+# Available components [VideoTranscoding, TaskManagement, CallbackManager, Heartbeat, SystemRadar]
+Components:
+  # List of active components
+  Active: ["VideoTranscoding", "TaskManagement", "Heartbeat", "CallbackManager", "SystemRadar"]
+
+  # VideoTranscoding component configuration
+  VideoTranscoding:
+    # Unique identifier for this component
+    UniqueID: "transcoder_worker_1"
+    # Interval for checking new tasks (unit in seconds)
+    CheckNewTaskInterval: 1
+    # Number of retries before marking a task as failed
+    MakeAsFailedAfterRetry: 2
+    # Name of the queue associated with this component
+    Queue: "video_transcoder"
+    Engine:
+      # Type of transcoding engine
+      Type: "ffmpeg"
+      Ffmpeg:
+        # Path to the FFmpeg executable
+        Executable: "/usr/local/bin/ffmpeg"
+        # Address for progress monitoring
+        ProgressListener: "localhost:7701"
+        Handlers:
+          # List of handlers for different scenarios
+          - "rasbora:/default.handler"
+          - "custom:/etc/rasbora/handlers/gpu_nivida_h264_cudia.handler"
+
+  # TaskManagement component configuration
+  TaskManagement:
+    # Unique identifier for this component
+    UniqueID: "task_manager_worker_1"
+    # Active protocol (selected "Restful")
+    Active: "Restful"
+    Protocols:
+      Restful:
+        # Address for listening to Restful requests
+        ListenAddress: "localhost:3701"
+
+  # CallbackManager component configuration
+  CallbackManager:
+    # Unique identifier for this component
+    UniqueID: "callback_worker_1"
+    # Interval for checking new callbacks (unit in seconds)
+    CheckNewCallbackInterval: 25
+    # Number of retries before marking a callback as failed
+    MakeAsFailedAfterRetry: 3
+    # Name of the queue associated with this component
+    Queue: "callback_manager"
+    # Active protocol (selected "http")
+    Active: "http"
+    Http:
+      # Timeout for sending HTTP requests
+      SendingTimeout: 15
+
+  # Heartbeat component configuration
+  Heartbeat:
+    # Interval for sending heartbeats
+    SendInterval: 60
+
+  # SystemRadar component configuration
+  SystemRadar:
+    # Unique identifier for this component
+    UniqueID: "dell-2u-radar1"
+    # Interval for system scanning
+    ScanInterval: 60
+    # Disk to monitor
+    DiskStat: "/"
+
+# Available database types [Redis]
+Database:
+  # Type of database (selected "Redis")
+  Type: "Redis"
+
+  # Redis database configuration
+  Redis:
+    Connection:
+      # Address of the Redis server
+      Address: "localhost:6379"
+      # Password for Redis (empty in this case)
+      Password: ""
+      # Index of the Redis database
+      DatabaseIndex: 0
+    Structure:
+      Logger: "rasbora:logs"
+      ControlPanel:
+        # Redis key for control panel users
+        Users: "rasbora:cp:users"
+      Cluster:
+        # Redis keys for cluster heartbeat and radar
+        Heartbeat: "rasbora:cluster:heartbeat"
+        Radar: "rasbora:system:radar"
+      Queue:
+        # Redis keys for various queue operations
+        Waiting: "rasbora:queue:{{name}}:waiting"
+        Status: "rasbora:queue:{{name}}:status"
+        Worker: "rasbora:queue:{{name}}:worker"
+        Retry: "rasbora:queue:{{name}}:retry"
+        Processing: "rasbora:queue:{{name}}:processing"
+        Items: "rasbora:queue:{{name}}:items"
+        Logs: "rasbora:queue:{{name}}:logs"
+
+# Available filesystem types [ObjectStorage, LocalStorage]
+Filesystem:
+  # Type of filesystem (selected "ObjectStorage" as main storage)
+  Type: "ObjectStorage"
+
+  # LocalStorage configuration
+  LocalStorage:
+    Folders:
+      # Rasbora logs file path
+      LoggerFilePath: "/tmp/rasbora.log"
+      # Temporary working path in the local storage
+      TemporaryWorkingPath: "/tmp/rasbora-workspace/"
+      # Path for transcoding processing logs
+      TranscoderProcessingLogs: "/tmp/rasbora-output/processing-logs"
+      # Path for transcoding output video files
+      TranscoderOutputVideos: "/tmp/rasbora-output/output-video-files"
+
+  # ObjectStorage configuration
+  ObjectStorage:
+    # Endpoint address for ObjectStorage
+    Endpoint: "localhost:9000"
+    # Access key for authentication
+    AccessKeyID: "minio"
+    # Secret access key for authentication
+    SecretAccessKey: "miniosecret"
+    # Session token (empty in this case)
+    SessionToken: ""
+    # Indicates whether SSL is used
+    UseSSL: false
+    # Type of signature used (only "v2," "v4," "v4Streaming," "noSignature" available)
+    Signature: "v4"
+    Buckets:
+      # Bucket for transcoding processing logs
+      TranscoderProcessingLogs: "rasbora-transcoder-processing-logs"
+      # Bucket for transcoding output video files
+      TranscoderOutputVideos: "rasbora-transcoder-output-video-files"
