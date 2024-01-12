@@ -58,6 +58,13 @@ func NewRadar(cfg *config.Config, log *logger.Logger, db *database.Database) *Sy
 
 // StartRadar make background thread to scan system info.
 func (sr *SystemRadar) StartRadar(ctx context.Context) {
+
+	// get system radar worker id
+	sr.workerId = sr.Config.GetString("Components.SystemRadar.UniqueID")
+
+	// get system radar scan interval in seconds
+	scanSystemInterval := sr.Config.GetInt("Components.SystemRadar.ScanInterval")
+
 	sr.Logger.Info(
 		"system_radar",
 		"initializing system radar worker",
@@ -65,10 +72,6 @@ func (sr *SystemRadar) StartRadar(ctx context.Context) {
 			"systemradar_worker_id": sr.workerId,
 		},
 	)
-
-	sr.workerId = sr.Config.GetString("Components.SystemRadar.UniqueID")
-
-	scanSystemInterval := sr.Config.GetInt("Components.SystemRadar.ScanInterval")
 
 	for {
 		select {

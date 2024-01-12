@@ -49,6 +49,7 @@ func (hcm *HttpCallbackManager) StartCallbackManager(ctx context.Context) {
 
 	// get callback manager queue name
 	hcm._queueName = hcm.Config.GetString("Components.CallbackManager.Queue")
+
 	// get callback manager worker id
 	hcm.workerId = hcm.Config.GetString("Components.CallbackManager.UniqueID")
 

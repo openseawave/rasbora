@@ -41,6 +41,8 @@ type Heartbeat struct {
 
 // Start sending heart beats to update cluster status.
 func (hb *Heartbeat) Start(ctx context.Context) {
+
+	// get send heartbeat interval in seconds
 	heartbeatSendInterval := hb.Config.GetInt("Components.Heartbeat.SendInterval")
 
 	hb.Logger.Info(

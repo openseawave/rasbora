@@ -20,6 +20,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"sync"
+
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
 	"openseawaves.com/rasbora/internal/config"
@@ -33,8 +36,6 @@ import (
 	"openseawaves.com/rasbora/src/systemradar"
 	"openseawaves.com/rasbora/src/taskmanager"
 	"openseawaves.com/rasbora/src/videotranscoder"
-	"os"
-	"sync"
 )
 
 var (
@@ -159,7 +160,7 @@ func initInternalSystemLogger() {
 			logFilePath := cfg.GetString("Filesystem.LocalStorage.Folders.LoggerFilePath")
 			logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 			if err != nil {
-				fmt.Println(fmt.Sprintf("error while openning log file: %v", err.Error()))
+				fmt.Printf("error while opening log file: %v\n", err.Error())
 				os.Exit(1)
 			}
 			outputs = append(outputs, data.LoggerOutputConfig{
@@ -202,11 +203,11 @@ func initInternalConfigManager() {
 	_viper := viper.New()
 
 	// Configuration settings for Viper
-	_viper.SetConfigName("default")
+	_viper.SetConfigName("config")
 	_viper.SetConfigType("yaml")
 	_viper.SetEnvPrefix("RASBORA")
 	_viper.AddConfigPath("/etc/rasbora/")
-	_viper.AddConfigPath("./configs/")
+	_viper.AddConfigPath("./")
 
 	// Attempt to read the configuration file
 	if err := _viper.ReadInConfig(); err != nil {
