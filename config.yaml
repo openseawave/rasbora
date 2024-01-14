@@ -17,7 +17,7 @@ Components:
     # Unique identifier for this component
     UniqueID: "transcoder_worker_1"
     # Interval for checking new tasks (unit in seconds)
-    CheckNewTaskInterval: 1
+    CheckNewTaskInterval: 5
     # Number of retries before marking a task as failed
     MakeAsFailedAfterRetry: 2
     # Name of the queue associated with this component

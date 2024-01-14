@@ -1,0 +1,211 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "Task Manager API for Rasbora Distributed Video Transcoding.",
+        "title": "Rasbora Task Manager API",
+        "contact": {
+            "name": "Rasbora Support",
+            "url": "https://rasbora.openseawaves.com/support",
+            "email": "rasbora.support@openseawaves.com"
+        },
+        "license": {
+            "name": "GNU Affero General Public License",
+            "url": "http://www.gnu.org/licenses/"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:3701",
+    "basePath": "/v1.0",
+    "paths": {
+        "/tasks/create": {
+            "post": {
+                "description": "Create new task for video transcoding.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Create new task for video transcoding.",
+                "parameters": [
+                    {
+                        "description": "Task data",
+                        "name": "task",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "openseawaves_com_rasbora_internal_data.FileSystemType": {
+            "type": "string",
+            "enum": [
+                "LocalStorage",
+                "ObjectStorage"
+            ],
+            "x-enum-varnames": [
+                "LocalFileSystemType",
+                "ObjectFileSystemType"
+            ]
+        },
+        "openseawaves_com_rasbora_internal_data.Response": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {}
+            }
+        },
+        "openseawaves_com_rasbora_internal_data.Task": {
+            "type": "object",
+            "required": [
+                "task_label",
+                "task_priority"
+            ],
+            "properties": {
+                "callback": {
+                    "description": "Callback struct holds details for a callback associated with the task.",
+                    "type": "object",
+                    "required": [
+                        "callback_data",
+                        "callback_url"
+                    ],
+                    "properties": {
+                        "callback_data": {
+                            "description": "Data to be sent as part of the callback."
+                        },
+                        "callback_url": {
+                            "description": "URL to send callback.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "created_at": {
+                    "description": "Timestamp indicating when the task was created.",
+                    "type": "integer"
+                },
+                "failed_at": {
+                    "description": "Timestamp indicating when the task failed.",
+                    "type": "integer"
+                },
+                "finished_at": {
+                    "description": "Timestamp indicating when the task finished.",
+                    "type": "integer"
+                },
+                "started_at": {
+                    "description": "Timestamp indicating when the task started.",
+                    "type": "integer"
+                },
+                "task_id": {
+                    "description": "Unique identifier for the task.",
+                    "type": "string"
+                },
+                "task_label": {
+                    "description": "Label for task.",
+                    "type": "string"
+                },
+                "task_priority": {
+                    "description": "Priority level assigned to the task.",
+                    "type": "number"
+                },
+                "video_transcoder": {
+                    "description": "VideoTranscoder contains details about video transcoding for the task.",
+                    "type": "object",
+                    "properties": {
+                        "input": {
+                            "type": "object",
+                            "required": [
+                                "input_file_name",
+                                "input_file_path",
+                                "input_file_system"
+                            ],
+                            "properties": {
+                                "input_file_name": {
+                                    "description": "Name of the input video file.",
+                                    "type": "string"
+                                },
+                                "input_file_path": {
+                                    "description": "Path to the input video file.",
+                                    "type": "string"
+                                },
+                                "input_file_system": {
+                                    "description": "File system type.",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.FileSystemType"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "output": {
+                            "description": "holds information how should be the video output.",
+                            "type": "object",
+                            "required": [
+                                "args",
+                                "container",
+                                "handler"
+                            ],
+                            "properties": {
+                                "args": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                    }
+                                },
+                                "container": {
+                                    "type": "string"
+                                },
+                                "handler": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

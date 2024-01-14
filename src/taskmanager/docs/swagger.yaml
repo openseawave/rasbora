@@ -1,0 +1,147 @@
+basePath: /v1.0
+definitions:
+  openseawaves_com_rasbora_internal_data.FileSystemType:
+    enum:
+    - LocalStorage
+    - ObjectStorage
+    type: string
+    x-enum-varnames:
+    - LocalFileSystemType
+    - ObjectFileSystemType
+  openseawaves_com_rasbora_internal_data.Response:
+    properties:
+      error:
+        type: boolean
+      message:
+        type: string
+      payload: {}
+    type: object
+  openseawaves_com_rasbora_internal_data.Task:
+    properties:
+      callback:
+        description: Callback struct holds details for a callback associated with
+          the task.
+        properties:
+          callback_data:
+            description: Data to be sent as part of the callback.
+          callback_url:
+            description: URL to send callback.
+            type: string
+        required:
+        - callback_data
+        - callback_url
+        type: object
+      created_at:
+        description: Timestamp indicating when the task was created.
+        type: integer
+      failed_at:
+        description: Timestamp indicating when the task failed.
+        type: integer
+      finished_at:
+        description: Timestamp indicating when the task finished.
+        type: integer
+      started_at:
+        description: Timestamp indicating when the task started.
+        type: integer
+      task_id:
+        description: Unique identifier for the task.
+        type: string
+      task_label:
+        description: Label for task.
+        type: string
+      task_priority:
+        description: Priority level assigned to the task.
+        type: number
+      video_transcoder:
+        description: VideoTranscoder contains details about video transcoding for
+          the task.
+        properties:
+          input:
+            properties:
+              input_file_name:
+                description: Name of the input video file.
+                type: string
+              input_file_path:
+                description: Path to the input video file.
+                type: string
+              input_file_system:
+                allOf:
+                - $ref: '#/definitions/openseawaves_com_rasbora_internal_data.FileSystemType'
+                description: File system type.
+            required:
+            - input_file_name
+            - input_file_path
+            - input_file_system
+            type: object
+          output:
+            description: holds information how should be the video output.
+            properties:
+              args:
+                items:
+                  additionalProperties: true
+                  type: object
+                type: array
+              container:
+                type: string
+              handler:
+                type: string
+            required:
+            - args
+            - container
+            - handler
+            type: object
+        type: object
+    required:
+    - task_label
+    - task_priority
+    type: object
+host: localhost:3701
+info:
+  contact:
+    email: rasbora.support@openseawaves.com
+    name: Rasbora Support
+    url: https://rasbora.openseawaves.com/support
+  description: Task Manager API for Rasbora Distributed Video Transcoding.
+  license:
+    name: GNU Affero General Public License
+    url: http://www.gnu.org/licenses/
+  title: Rasbora Task Manager API
+  version: "1.0"
+paths:
+  /tasks/create:
+    post:
+      consumes:
+      - application/json
+      description: Create new task for video transcoding.
+      parameters:
+      - description: Task data
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Task'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+      summary: Create new task for video transcoding.
+      tags:
+      - tasks
+schemes:
+- http
+swagger: "2.0"

@@ -4,13 +4,21 @@
 root = true
 
 [*]
-indent_style = tab
-indent_size = 4
-end_of_line = lf
 charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
 
 [*.go]
 indent_style = tab
 indent_size = 8
+trim_trailing_whitespace = true
+insert_final_newline = true
+trim_trailing_whitespace = true
+curly_bracket_next_line = false
+indent_brace_style = Allman
+max_line_length = off
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+
+[Makefile]
+indent_style = tab
+indent_size = 4
