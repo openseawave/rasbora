@@ -22,13 +22,18 @@ import (
 	"os"
 	"time"
 
+	swagger "github.com/arsmn/fiber-swagger/v2"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/google/uuid"
 	"openseawaves.com/rasbora/internal/config"
 	"openseawaves.com/rasbora/internal/data"
 	"openseawaves.com/rasbora/internal/database"
 	"openseawaves.com/rasbora/internal/logger"
+
+	// Auto-generated swagger documentation
+	_ "openseawaves.com/rasbora/src/taskmanager/docs"
 )
 
 // RestfulTaskManager hold an instance
@@ -41,7 +46,17 @@ type RestfulTaskManager struct {
 	app                   *fiber.App
 }
 
-// StartTaskManager starts the restful task manager server.
+// @title Rasbora Task Manager API
+// @version 1.0
+// @description Task Manager API for Rasbora Distributed Video Transcoding.
+// @contact.name Rasbora Support
+// @contact.url	https://rasbora.openseawaves.com/support
+// @contact.email rasbora.support@openseawaves.com
+// @license.name GNU Affero General Public License
+// @license.url	http://www.gnu.org/licenses/
+// @host localhost:3701
+// @BasePath /v1.0
+// @schemes http
 func (rtm *RestfulTaskManager) StartTaskManager(ctx context.Context) {
 
 	// get video transcoder queue name
@@ -92,7 +107,16 @@ func (rtm *RestfulTaskManager) StartTaskManager(ctx context.Context) {
 
 // _prepareHttpServer return errors as json response.
 func (rtm *RestfulTaskManager) _prepareHttpServer() {
+	// Load recover middleware.
+	rtm.app.Use(recover.New())
+
+	// Load json errors middleware.
 	rtm.app.Use(rtm._middlewareJsonErrors)
+
+	// Add endpoint to serve swagger documentation.
+	rtm.app.Get("/swagger/*", swagger.HandlerDefault)
+
+	// Add endpoint to server creating new tasks.
 	rtm.app.Post("/v1.0/tasks/create", rtm._endpointCreateNewTask)
 }
 
@@ -120,7 +144,18 @@ func (rtm *RestfulTaskManager) _middlewareJsonErrors(c *fiber.Ctx) error {
 	return nil
 }
 
-// _endpointCreateNewTask handles creating a new task using POST requests.
+// CreateTask godoc
+// @Summary Create new task for video transcoding.
+// @Description Create new task for video transcoding.
+// @Tags tasks
+// @Param task body data.Task true "Task data"
+// @Accept  application/json
+// @Produce  application/json
+// @Success 200 {object} data.Response
+// @Failure 400 {object} data.Response
+// @Failure 404 {object} data.Response
+// @Failure 500 {object} data.Response
+// @Router /tasks/create [post]
 func (rtm *RestfulTaskManager) _endpointCreateNewTask(c *fiber.Ctx) error {
 
 	rtm.Logger.Info(

@@ -18,3 +18,5 @@
 .idea/
 .vscode/
 .devcontainer/
+vendor/
+.build/
