@@ -1,0 +1,56 @@
+version: "3.9"
+name: "rasbora"
+services:
+
+  rasbora:
+    restart: unless-stopped
+    build: .
+    tty: true
+    ports:
+      - "3701:3701"
+    volumes:
+      - ./config.yaml:/etc/rasbora/config.yaml:ro
+    networks:
+      - default_network
+    environment:
+      - RASBORA_DATABASE_REDIS_CONNECTION_ADDRESS=redis:6379
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ENDPOINT=minio:9000
+      - RASBORA_COMPONENTS_VIDEOTRANSCODING_ENGINE_FFMPEG_EXECUTABLE=/usr/bin/ffmpeg
+
+  minio:
+    restart: unless-stopped
+    image: quay.io/minio/minio:latest
+    tty: true
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - default_network
+    volumes:
+      - minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=rasbora
+      - MINIO_ROOT_PASSWORD=rasbora
+      - MINIO_DEFAULT_BUCKETS=rasbora
+
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: "redis-server --appendonly yes"
+    networks:
+      - default_network
+
+networks:
+  default_network:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
