@@ -21,6 +21,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"sync"
 
 	"github.com/redis/go-redis/v9"
@@ -206,8 +207,10 @@ func initInternalConfigManager() {
 	_viper.SetConfigName("config")
 	_viper.SetConfigType("yaml")
 	_viper.SetEnvPrefix("RASBORA")
+	_viper.AutomaticEnv()
 	_viper.AddConfigPath("/etc/rasbora/")
 	_viper.AddConfigPath("./")
+	_viper.SetEnvKeyReplacer(strings.NewReplacer(`.`, `_`))
 
 	// Attempt to read the configuration file
 	if err := _viper.ReadInConfig(); err != nil {

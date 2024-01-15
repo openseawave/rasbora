@@ -1,7 +1,7 @@
 # Logging configuration
 Logger:
   # Unique identifier for the logger
-  UniqueID: "dell-2u-logger1"
+  UniqueID: "00xl-server-logger1"
   # Log levels: success=1, info=2, warn=3, errors=4, debug=5
   Level: [ 1, 2, 3, 4, 5 ]
   # Available output types [stdout, database, file]
@@ -15,7 +15,7 @@ Components:
   # VideoTranscoding component configuration
   VideoTranscoding:
     # Unique identifier for this component
-    UniqueID: "transcoder_worker_1"
+    UniqueID: "00xl-server-transcoder1"
     # Interval for checking new tasks (unit in seconds)
     CheckNewTaskInterval: 5
     # Number of retries before marking a task as failed
@@ -38,7 +38,7 @@ Components:
   # TaskManagement component configuration
   TaskManagement:
     # Unique identifier for this component
-    UniqueID: "task_manager_worker_1"
+    UniqueID: "00xl-server-taskmanager1"
     # Active protocol (selected "Restful")
     Active: "Restful"
     Protocols:
@@ -49,7 +49,7 @@ Components:
   # CallbackManager component configuration
   CallbackManager:
     # Unique identifier for this component
-    UniqueID: "callback_worker_1"
+    UniqueID: "00xl-server-callback1"
     # Interval for checking new callbacks (unit in seconds)
     CheckNewCallbackInterval: 25
     # Number of retries before marking a callback as failed
@@ -70,7 +70,7 @@ Components:
   # SystemRadar component configuration
   SystemRadar:
     # Unique identifier for this component
-    UniqueID: "dell-2u-radar1"
+    UniqueID: "00xl-server-radar1"
     # Interval for system scanning
     ScanInterval: 60
     # Disk to monitor
