@@ -15,23 +15,26 @@ services:
     environment:
       - RASBORA_DATABASE_REDIS_CONNECTION_ADDRESS=redis:6379
       - RASBORA_FILESYSTEM_OBJECTSTORAGE_ENDPOINT=minio:9000
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ACCESSKEYID=rasbora_minio_user
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_SECRETACCESSKEY=rasbora_minio_password
       - RASBORA_COMPONENTS_VIDEOTRANSCODING_ENGINE_FFMPEG_EXECUTABLE=/usr/bin/ffmpeg
 
   minio:
+    image: bitnami/minio:latest
     restart: unless-stopped
-    image: quay.io/minio/minio:latest
-    tty: true
     ports:
       - "9000:9000"
       - "9001:9001"
     networks:
       - default_network
     volumes:
-      - minio_data:/data
+      - minio_data:/bitnami/minio/data
     environment:
-      - MINIO_ROOT_USER=rasbora
-      - MINIO_ROOT_PASSWORD=rasbora
-      - MINIO_DEFAULT_BUCKETS=rasbora
+      - MINIO_SCHEME=http
+      - MINIO_SKIP_CLIENT=no
+      - MINIO_ROOT_USER=rasbora_minio_user
+      - MINIO_ROOT_PASSWORD=rasbora_minio_password
+      - MINIO_DEFAULT_BUCKETS=rasbora-transcoder-output-video-files,rasbora-transcoder-processing-logs
 
   redis:
     image: redis:latest
