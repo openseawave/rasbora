@@ -113,11 +113,11 @@ func (rtm *RestfulTaskManager) _prepareHttpServer() {
 	// Load json errors middleware.
 	rtm.app.Use(rtm._middlewareJsonErrors)
 
-	// Add endpoint to serve swagger documentation.
-	rtm.app.Get("/swagger/*", swagger.HandlerDefault)
-
 	// Add endpoint to server creating new tasks.
 	rtm.app.Post("/v1.0/tasks/create", rtm._endpointCreateNewTask)
+
+	// Add endpoint to serve swagger documentation.
+	rtm.app.Get("/swagger/*", swagger.HandlerDefault)
 }
 
 // _middlewareJsonErrors return errors as json response.
