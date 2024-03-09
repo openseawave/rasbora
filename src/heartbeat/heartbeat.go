@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"time"
 
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/database"
-	"openseawaves.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/database"
+	"openseawave.com/rasbora/internal/logger"
 )
 
 // Name used as identifier.
@@ -42,8 +42,21 @@ type Heartbeat struct {
 // Start sending heart beats to update cluster status.
 func (hb *Heartbeat) Start(ctx context.Context) {
 
+	//check if heartbeat is disabled
+	if !hb.Config.GetBool("Heartbeat.Enabled") {
+		hb.Logger.Info(
+			"heartbeat",
+			"heartbeat is disabled",
+			map[string]interface{}{
+				"worker_id":   hb.WorkerId,
+				"worker_type": hb.WorkerType,
+			},
+		)
+		return
+	}
+
 	// get send heartbeat interval in seconds
-	heartbeatSendInterval := hb.Config.GetInt("Components.Heartbeat.SendInterval")
+	heartbeatSendInterval := hb.Config.GetInt("Heartbeat.SendInterval")
 
 	hb.Logger.Info(
 		"heartbeat",

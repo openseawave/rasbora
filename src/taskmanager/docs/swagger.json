@@ -8,8 +8,8 @@
         "title": "Rasbora Task Manager API",
         "contact": {
             "name": "Rasbora Support",
-            "url": "https://rasbora.openseawaves.com/support",
-            "email": "rasbora.support@openseawaves.com"
+            "url": "https://rasbora.openseawave.com",
+            "email": "rasbora.support@openseawave.com"
         },
         "license": {
             "name": "GNU Affero General Public License",
@@ -40,7 +40,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Task"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Task"
                         }
                     }
                 ],
@@ -48,25 +48,25 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     }
                 }
@@ -74,7 +74,7 @@
         }
     },
     "definitions": {
-        "openseawaves_com_rasbora_internal_data.FileSystemType": {
+        "openseawave_com_rasbora_internal_data.FileSystemType": {
             "type": "string",
             "enum": [
                 "LocalStorage",
@@ -85,7 +85,7 @@
                 "ObjectFileSystemType"
             ]
         },
-        "openseawaves_com_rasbora_internal_data.Response": {
+        "openseawave_com_rasbora_internal_data.Response": {
             "type": "object",
             "properties": {
                 "error": {
@@ -97,7 +97,7 @@
                 "payload": {}
             }
         },
-        "openseawaves_com_rasbora_internal_data.Task": {
+        "openseawave_com_rasbora_internal_data.Task": {
             "type": "object",
             "required": [
                 "task_label",
@@ -173,7 +173,7 @@
                                     "description": "File system type.",
                                     "allOf": [
                                         {
-                                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.FileSystemType"
+                                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.FileSystemType"
                                         }
                                     ]
                                 }

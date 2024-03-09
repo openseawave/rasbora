@@ -1,6 +1,6 @@
 basePath: /v1.0
 definitions:
-  openseawaves_com_rasbora_internal_data.FileSystemType:
+  openseawave_com_rasbora_internal_data.FileSystemType:
     enum:
     - LocalStorage
     - ObjectStorage
@@ -8,7 +8,7 @@ definitions:
     x-enum-varnames:
     - LocalFileSystemType
     - ObjectFileSystemType
-  openseawaves_com_rasbora_internal_data.Response:
+  openseawave_com_rasbora_internal_data.Response:
     properties:
       error:
         type: boolean
@@ -16,7 +16,7 @@ definitions:
         type: string
       payload: {}
     type: object
-  openseawaves_com_rasbora_internal_data.Task:
+  openseawave_com_rasbora_internal_data.Task:
     properties:
       callback:
         description: Callback struct holds details for a callback associated with
@@ -66,7 +66,7 @@ definitions:
                 type: string
               input_file_system:
                 allOf:
-                - $ref: '#/definitions/openseawaves_com_rasbora_internal_data.FileSystemType'
+                - $ref: '#/definitions/openseawave_com_rasbora_internal_data.FileSystemType'
                 description: File system type.
             required:
             - input_file_name
@@ -98,9 +98,9 @@ definitions:
 host: localhost:3701
 info:
   contact:
-    email: rasbora.support@openseawaves.com
+    email: rasbora.support@openseawave.com
     name: Rasbora Support
-    url: https://rasbora.openseawaves.com/support
+    url: https://rasbora.openseawave.com
   description: Task Manager API for Rasbora Distributed Video Transcoding.
   license:
     name: GNU Affero General Public License
@@ -119,26 +119,26 @@ paths:
         name: task
         required: true
         schema:
-          $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Task'
+          $ref: '#/definitions/openseawave_com_rasbora_internal_data.Task'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+            $ref: '#/definitions/openseawave_com_rasbora_internal_data.Response'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+            $ref: '#/definitions/openseawave_com_rasbora_internal_data.Response'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+            $ref: '#/definitions/openseawave_com_rasbora_internal_data.Response'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/openseawaves_com_rasbora_internal_data.Response'
+            $ref: '#/definitions/openseawave_com_rasbora_internal_data.Response'
       summary: Create new task for video transcoding.
       tags:
       - tasks

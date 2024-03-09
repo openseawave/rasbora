@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -32,12 +32,12 @@ import (
 
 	"github.com/flosch/pongo2/v6"
 	"gopkg.in/vansante/go-ffprobe.v2"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
-	"openseawaves.com/rasbora/internal/database"
-	"openseawaves.com/rasbora/internal/filesystem"
-	"openseawaves.com/rasbora/internal/logger"
-	"openseawaves.com/rasbora/internal/utilities"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/database"
+	"openseawave.com/rasbora/internal/filesystem"
+	"openseawave.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/utilities"
 )
 
 // FfmpegTranscoderEngine hold an instance

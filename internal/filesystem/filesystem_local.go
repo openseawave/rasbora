@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -19,8 +19,9 @@ package filesystem
 
 import (
 	"io"
-	"openseawaves.com/rasbora/internal/data"
 	"os"
+
+	"openseawave.com/rasbora/internal/data"
 )
 
 type LocalFileSystem struct{}

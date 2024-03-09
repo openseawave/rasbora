@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -26,17 +26,17 @@ import (
 
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
-	"openseawaves.com/rasbora/internal/database"
-	"openseawaves.com/rasbora/internal/filesystem"
-	"openseawaves.com/rasbora/internal/logger"
-	"openseawaves.com/rasbora/internal/utilities"
-	"openseawaves.com/rasbora/src/callbacks"
-	"openseawaves.com/rasbora/src/heartbeat"
-	"openseawaves.com/rasbora/src/systemradar"
-	"openseawaves.com/rasbora/src/taskmanager"
-	"openseawaves.com/rasbora/src/videotranscoder"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/database"
+	"openseawave.com/rasbora/internal/filesystem"
+	"openseawave.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/utilities"
+	"openseawave.com/rasbora/src/callbacks"
+	"openseawave.com/rasbora/src/heartbeat"
+	"openseawave.com/rasbora/src/systemradar"
+	"openseawave.com/rasbora/src/taskmanager"
+	"openseawave.com/rasbora/src/videotranscoder"
 )
 
 var (
@@ -126,11 +126,11 @@ func main() {
 
 // showRasboraInfo show rasbora info
 func initShowRasboraInfo() {
-	fmt.Println("\nRasbora Video Transcoding")
+	fmt.Println("\nRasbora Distributed Video Transcoding")
 	fmt.Printf("Version    : %s\n", Version)
 	fmt.Printf("GitHash    : %s\n", GitHash)
 	fmt.Printf("BuildTime  : %s\n", BuildTime)
-	fmt.Printf("Copyright  : %s\n", "2022-2023 https://openseawaves.com/rasbora")
+	fmt.Printf("Copyright  : %s\n", "2022-2023 https://openseawave.com/rasbora")
 	fmt.Printf("License    : %s\n", "GNU Affero General Public License\n")
 }
 
@@ -192,7 +192,7 @@ func initInternalConfigManager() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	l.Info(
@@ -226,6 +226,12 @@ func initInternalConfigManager() {
 		"initialized successfully.",
 		nil,
 	)
+
+	l.Debug(
+		"main.init.config",
+		"configurations",
+		_viper.AllSettings(),
+	)
 }
 
 // initInternalDatabaseConnection prepare the database connection based on configuration settings.
@@ -238,7 +244,7 @@ func initInternalDatabaseConnection() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	dbType := cfg.GetString("Database.Type")
@@ -312,7 +318,7 @@ func initInternalFileSystem() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	fileSystemType := cfg.GetString("Filesystem.Type")
@@ -350,6 +356,26 @@ func initInternalFileSystem() {
 		fs = filesystem.NewFileSystem(&filesystem.ObjectFileSystem{
 			Minio: minioClient,
 		})
+
+		l.Info(
+			"main.init.database",
+			"testing the connection to filesystem",
+			map[string]interface{}{
+				"filesystem_type": fileSystemType,
+			},
+		)
+
+		_, err = minioClient.ListBuckets(ctx)
+		if err != nil {
+			l.Error(
+				"main.init.filesystem",
+				fmt.Sprintf("error when testing the connection to filesystem: %s", err.Error()),
+				map[string]interface{}{
+					"filesystem_type": fileSystemType,
+				},
+			)
+			os.Exit(1)
+		}
 
 		l.Success(
 			"main.init.filesystem",
