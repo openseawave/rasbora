@@ -17,9 +17,27 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 ## Prerequisites
 
 Here is what you need to be able to run Rasbora.
-
+    Git (Version: >=2.x.x)
     Docker Compose (Version: >=2.24.x)
     Docker (Version: >=25.x.x)
+
+## Development (Standalone)
+
+Deploy Rasbora as standalone:
+
+```bash
+git clone https://github.com/openseawave/rasbora.git
+
+cd rasbora/
+
+# Modify the .env file to fit your system
+cp .env.example .env
+
+# Run Docker Compose
+docker-compose up -d
+```
+
+Note: Please ensure that Docker Compose is installed on your system before running the above commands.
 
 ## Supported Storage System
 
@@ -94,7 +112,9 @@ Here is what you need to be able to run Rasbora.
 ## TODO
 
 ⬜️ Full Testing Coverage
+
 ⬜️ Start Community Forum
+
 ⬜️ Q/A Documentation Site
 
 ## License
