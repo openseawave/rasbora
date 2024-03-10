@@ -82,11 +82,11 @@ Rasbora's will support in future many hardware acceleration options:
 
 Communicate seamlessly with Rasbora through RESTful APIs and explore upcoming gRPC and Websocket integrations:
 
-| Method     | Type | Supported |Status|
-|--------------|-----------|-------|----|
-| Restful     | ✅  Ready| application/json        |Done  |
-| gRPC         | ⬜️        | application/protobuf |In Progress  |
-| Websocket    | ⬜️        | application/json |In Progress  |
+| Method     | Type | Supported |Status| Docs |
+|--------------|-----------|-------|----|-----|
+| Restful     | ✅  Ready| application/json        |Done  | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/swagger.png?raw=true">](http://localhost:3701/swagger/index.html) [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/postman.png?raw=true">](https://github.com/openseawave/rasbora/blob/main/postman.json)|
+| gRPC         | ⬜️        | application/protobuf |In Progress  |In Progress |
+| Websocket    | ⬜️        | application/json |In Progress  |In Progress |
 
 ## Supported Callback Methods
 
@@ -104,11 +104,10 @@ The supported queue/database systems and their current status:
 
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
-| Redis     | ✅  Ready       |Done  |
-| RabbitMQ  | ⬜️        |In Progress|
-| ActiveMQ  | ⬜️ |In Progress|
-| ZeroMq | ⬜️ |In Progress|
-| Amazon SQS| ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/sorted-sets/) Redis     | ✅  Ready       |Done  |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/rabbitmq.png?raw=true">](https://www.rabbitmq.com/docs/queues) RabbitMQ  | ⬜️        |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/activemq.png?raw=true">](https://activemq.apache.org/components/classic/documentation/) ActiveMQ  | ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/awssqs.png?raw=true">](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) Amazon SQS| ⬜️ |In Progress|
 
 ## Supported Log Collectors
 
@@ -129,9 +128,9 @@ The supported monitoring methods and their current status:
 
 | Method    | Supported |Status|
 |--------------|-----------|-------|
-| Redis/Streams|✅   Ready      |Done  |
-| Grafana   | ⬜️ |In Progress|
-| Prometheus| ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/streams/) Redis/Streams|✅   Ready      |Done  |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/grafana.png?raw=true">](https://grafana.com/docs/grafana/latest/) Grafana   | ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/prometheus.png?raw=true">](https://prometheus.io/docs/introduction/overview/) Prometheus| ⬜️ |In Progress|
 
 ## TODO
 
