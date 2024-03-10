@@ -89,6 +89,8 @@ Communicate seamlessly with Rasbora through RESTful APIs and explore upcoming gR
 | gRPC         | ⬜️        | application/protobuf |In Progress  |In Progress |
 | Websocket    | ⬜️        | application/json |In Progress  |In Progress |
 
+Note: To access the Swagger documentation, ensure that Rasbora is running, if you change the port of Task Manager component adjust the documentation URL accordingly.
+
 ## Supported Callback Methods
 
 Current supported callback methods and their current status:
