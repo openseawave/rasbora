@@ -15,8 +15,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-FROM golang:1.21 AS builder
+ARG FFMPEG_ENGINE_IMAGE=jrottenberg/ffmpeg:4.4-alpine
+
+FROM golang:1.22 AS builder
+
 LABEL maintainer="Rasbora <[rasbora.support]@openseawave.com>"
+
 WORKDIR /build
 
 # Fetch dependencies
@@ -29,9 +33,13 @@ RUN go mod verify
 RUN CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -ldflags "-s -X main.Version=`git describe --tags --long` -X main.BuildTime=`TZ=UTC date -u '+%Y-%m-%dT%H:%M:%SZ'` -X main.GitHash=`git rev-parse HEAD`" -o linux_amd64_`git describe --tags --long` -o rasbora ./cmd/main.go
 
 # Production phase
-FROM golang:1.21
-RUN apt-get update && apt-get install ffmpeg -y
-WORKDIR /app
+FROM ${FFMPEG_ENGINE_IMAGE}
+
+WORKDIR /
 COPY --from=builder /build/rasbora .
-EXPOSE 3701
-ENTRYPOINT [ "/app/rasbora"]
+
+# Expose port for task manager
+EXPOSE 3701 
+
+# Run the application
+ENTRYPOINT [ "/rasbora"]

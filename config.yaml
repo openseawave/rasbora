@@ -15,6 +15,10 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# LICENSE
+License:
+  Type: "community"
+  Key: nil
 # Logging configuration
 Logger:
   # Unique identifier for the logger
@@ -46,7 +50,7 @@ Components:
         # Path to the FFmpeg executable
         Executable: "/usr/local/bin/ffmpeg"
         # Address for progress monitoring
-        ProgressListener: "localhost:7701"
+        ProgressListener: ":7701"
         Handlers:
           # List of handlers for different scenarios
           - "rasbora:/default.handler"
@@ -62,7 +66,7 @@ Components:
     Protocols:
       Restful:
         # Address for listening to Restful requests
-        ListenAddress: "localhost:3701"
+        ListenAddress: ":3701"
 
   # CallbackManager component configuration
   CallbackManager:
@@ -91,6 +95,8 @@ Components:
 
 # Heartbeat configuration
 Heartbeat:
+  # Unique identifier for the heartbate
+  UniqueID: "00xl-server-heartbate1"
   # Enable or disable heartbeat
   Enabled: true
   # Interval for sending heartbeats
@@ -151,9 +157,9 @@ Filesystem:
     # Endpoint address for ObjectStorage
     Endpoint: "localhost:9000"
     # Access key for authentication
-    AccessKeyID: "minio"
+    AccessKeyID: "rasbora_s3_key"
     # Secret access key for authentication
-    SecretAccessKey: "miniosecret"
+    SecretAccessKey: "rasbora_s3_access"
     # Session token (empty in this case)
     SessionToken: ""
     # Indicates whether SSL is used

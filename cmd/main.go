@@ -19,6 +19,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"strings"
@@ -57,6 +58,7 @@ var (
 	Version   = "undefined"
 	BuildTime = "undefined"
 	GitHash   = "undefined"
+	Support   = "Community Edition"
 	ctx       = context.Background()
 )
 
@@ -86,37 +88,85 @@ func main() {
 
 		//start callback manager component
 		if component == callbacks.Name {
+			log.Info(
+				"main",
+				"starting callback manager component",
+				nil,
+			)
+
 			_startComponent(
 				cfg.GetString("Components.CallbackManager.UniqueID"),
 				callbacks.Name,
 				initComponentCallbackManager,
 			)
+
+			log.Success(
+				"main",
+				"callback manager component has been started",
+				nil,
+			)
 		}
 
 		//start task manager component
 		if component == taskmanager.Name {
+			log.Info(
+				"main",
+				"starting task manager component",
+				nil,
+			)
+
 			_startComponent(
 				cfg.GetString("Components.TaskManagement.UniqueID"),
 				taskmanager.Name,
 				initComponentTaskManager,
 			)
+
+			log.Success(
+				"main",
+				"task manager component has been started",
+				nil,
+			)
 		}
 
 		//start video transcoder component
 		if component == videotranscoder.Name {
+			log.Info(
+				"main",
+				"starting video transcoder component",
+				nil,
+			)
+
 			_startComponent(
 				cfg.GetString("Components.VideoTranscoding.UniqueID"),
 				videotranscoder.Name,
 				initComponentVideoTranscoder,
 			)
+
+			log.Success(
+				"main",
+				"video transcoder component has been started",
+				nil,
+			)
 		}
 
 		//start system radar component
 		if component == systemradar.Name {
+			log.Info(
+				"main",
+				"starting system radar component",
+				nil,
+			)
+
 			_startComponent(
 				cfg.GetString("Components.SystemRadar.UniqueID"),
 				systemradar.Name,
 				initComponentSystemRadar,
+			)
+
+			log.Success(
+				"main",
+				"system radar component has been started",
+				nil,
 			)
 		}
 	}
@@ -126,12 +176,13 @@ func main() {
 
 // showRasboraInfo show rasbora info
 func initShowRasboraInfo() {
-	fmt.Println("\nRasbora Distributed Video Transcoding")
+	fmt.Println("Rasbora Distributed Video Transcoding")
 	fmt.Printf("Version    : %s\n", Version)
 	fmt.Printf("GitHash    : %s\n", GitHash)
 	fmt.Printf("BuildTime  : %s\n", BuildTime)
-	fmt.Printf("Copyright  : %s\n", "2022-2023 https://openseawave.com/rasbora")
-	fmt.Printf("License    : %s\n", "GNU Affero General Public License\n")
+	fmt.Printf("Copyright  : %s\n", "2022-2023 https://rasbora.openseawave.com")
+	fmt.Printf("License    : %s\n", "GNU Affero General Public License")
+	fmt.Printf("Support    : %s\n", Support+"\n")
 }
 
 // initInternalSystemLogger initializes the system logger based on configuration settings.
@@ -178,7 +229,7 @@ func initInternalSystemLogger() {
 
 	log.Success(
 		"main.init.logger",
-		"initialized successfully.",
+		"logger has been initialized successfully.",
 		nil,
 	)
 }
@@ -227,10 +278,15 @@ func initInternalConfigManager() {
 		nil,
 	)
 
+	// Print the configuration settings to stdout
+	cfgJson, _ := json.Marshal(_viper.AllSettings())
+
 	l.Debug(
 		"main.init.config",
-		"configurations",
-		_viper.AllSettings(),
+		"current configurations settings",
+		map[string]interface{}{
+			"applyed": string(cfgJson),
+		},
 	)
 }
 
@@ -356,15 +412,7 @@ func initInternalFileSystem() {
 		fs = filesystem.NewFileSystem(&filesystem.ObjectFileSystem{
 			Minio: minioClient,
 		})
-
-		l.Info(
-			"main.init.database",
-			"testing the connection to filesystem",
-			map[string]interface{}{
-				"filesystem_type": fileSystemType,
-			},
-		)
-
+        
 		_, err = minioClient.ListBuckets(ctx)
 		if err != nil {
 			l.Error(

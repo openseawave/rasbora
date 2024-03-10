@@ -18,12 +18,18 @@
 version: "3.9"
 name: "rasbora"
 services:
-
   rasbora:
     container_name: rasbora
-    restart: unless-stopped
-    build: .
+    restart: always
+    build:
+      context: .
+      args:
+        FFMPEG_ENGINE_IMAGE: ${VIDEO_TRANSCODER_IMAGE}
+    image: openseawave/rasbora-ce:latest
     tty: true
+    depends_on:
+      - redis
+      - minio
     ports:
       - "3701:3701"
     volumes:
@@ -34,6 +40,9 @@ services:
       - .env
     environment:
       # All configurations are set in .env file will override the default configurations in config.yaml.
+      # License Configuration
+      - RASBORA_LICENSE_TYPE=${LICENSE_TYPE}
+      - RASBORA_LICENSE_KEY=${LICENSE_KEY}
       # Logger Configuration
       - RASBORA_LOGGER_UNIQUEID=${LOGGER_UNIQUE_ID}
       - RASBORA_LOGGER_LEVEL=${LOGGER_LEVEL}
@@ -48,12 +57,14 @@ services:
       # Task Management Component
       - RASBORA_COMPONENTS_TASKMANAGEMENT_UNIQUEID=${TASK_MANAGEMENT_UNIQUE_ID}
       - RASBORA_COMPONENTS_TASKMANAGEMENT_ACTIVE=${TASK_MANAGEMENT_PROTOCOL}
+      - RASBORA_COMPONENTS_TASKMANAGEMENT_PROTOCOLS_RESTFUL_LISTENADDRESS=${TASK_MANAGEMENT_RESTFUL_LISTEN_PORT}
       # Callback Manager Component
       - RASBORA_COMPONENTS_CALLBACKMANAGER_UNIQUEID=${CALLBACK_MANAGER_UNIQUE_ID}
       - RASBORA_COMPONENTS_CALLBACKMANAGER_ACTIVE=${CALLBACK_MANAGER_PROTOCOL}
       - RASBORA_COMPONENTS_CALLBACKMANAGER_CHECKNEWCALLBACKINTERVAL=${CALLBACK_MANAGER_CHECK_NEW_CALLBACK_INTERVAL}
       - RASBORA_COMPONENTS_CALLBACKMANAGER_MAKEASFAILEDAFTERRETRY=${CALLBACK_MANAGER_MAKE_AS_FAILED_AFTER_RETRY}
       # Heartbeat Component
+      - RASBORA_HEARTBEAT_UNIQUEID=${HEARTBEAT_UNIQUE_ID}
       - RASBORA_HEARTBEAT_ENABLED=${HEARTBEAT_ENABLED}
       - RASBORA_HEARTBEAT_SENDINTERVAL=${HEARTBEAT_SEND_INTERVAL}
       # System Radar Component
@@ -84,7 +95,7 @@ services:
   minio:
     container_name: minio
     image: bitnami/minio:latest
-    restart: unless-stopped
+    restart: always
     env_file:
       - .env
     networks:
@@ -103,7 +114,7 @@ services:
     image: redis:latest
     env_file:
       - .env
-    restart: unless-stopped
+    restart: always
     tty: true
     volumes:
       - redis_data:/data
