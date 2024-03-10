@@ -18,8 +18,7 @@
 # LICENSE
 License:
   Type: "community"
-  Key: ""
-
+  Key: nil
 # Logging configuration
 Logger:
   # Unique identifier for the logger
@@ -29,10 +28,10 @@ Logger:
   # Available output types [stdout, database, file]
   Output: ["stdout", "database", "file"]
 
-# Available components [VideoTranscoding, TaskManagement, CallbackManager, Heartbeat, SystemRadar]
+# Available components [VideoTranscoding, TaskManagement, CallbackManager, SystemRadar]
 Components:
   # List of active components
-  Active: ["VideoTranscoding", "TaskManagement", "Heartbeat", "CallbackManager", "SystemRadar"]
+  Active: ["VideoTranscoding", "TaskManagement", "CallbackManager", "SystemRadar"]
 
   # VideoTranscoding component configuration
   VideoTranscoding:
@@ -41,7 +40,7 @@ Components:
     # Interval for checking new tasks (unit in seconds)
     CheckNewTaskInterval: 5
     # Number of retries before marking a task as failed
-    MakeAsFailedAfterRetry: 2
+    MakeAsFailedAfterRetry: 3
     # Name of the queue associated with this component
     Queue: "video_transcoder"
     Engine:
@@ -55,7 +54,8 @@ Components:
         Handlers:
           # List of handlers for different scenarios
           - "rasbora:/default.handler"
-          - "custom:/etc/rasbora/handlers/gpu_nivida_h264_cudia.handler"
+          # Example: if you have a custom handler for GPU-accelerated transcoding
+          # - "custom:/etc/rasbora/handlers/gpu_nivida_h264_cudia.handler"
 
   # TaskManagement component configuration
   TaskManagement:
@@ -83,11 +83,6 @@ Components:
     Http:
       # Timeout for sending HTTP requests
       SendingTimeout: 15
-
-  # Heartbeat component configuration
-  Heartbeat:
-    # Interval for sending heartbeats
-    SendInterval: 60
 
   # SystemRadar component configuration
   SystemRadar:

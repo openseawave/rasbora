@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -20,10 +20,11 @@ package logger
 import (
 	"bytes"
 	"fmt"
-	"openseawaves.com/rasbora/internal/data"
 	"os"
 	"strings"
 	"testing"
+
+	"openseawave.com/rasbora/internal/data"
 )
 
 func TestNewLogger(t *testing.T) {

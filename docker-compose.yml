@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-version: "3.7"
+version: "3.9"
 name: "rasbora"
 services:
-
   rasbora:
     container_name: rasbora
     restart: always
@@ -36,7 +35,9 @@ services:
     volumes:
       - ./config.yaml:/etc/rasbora/config.yaml:ro
     networks:
-      - default_network
+      - rasbora_network
+    env_file:
+      - .env
     environment:
       # All configurations are set in .env file will override the default configurations in config.yaml.
       # License Configuration
@@ -92,37 +93,39 @@ services:
       - RASBORA_FILESYSTEM_OBJECTSTORAGE_BUCKET_TRANSCODEROUTPUTVIDEOS=${S3_STORAGE_BUCKET_TRANSCODER_OUTPUT_VIDEO}
 
   minio:
+    container_name: minio
     image: bitnami/minio:latest
     restart: always
     env_file:
       - .env
     networks:
-      - default_network
+      - rasbora_network
     volumes:
       - minio_data:/bitnami/minio/data
     environment:
       - MINIO_SCHEME=http
       - MINIO_SKIP_CLIENT=no
-      - MINIO_ROOT_USER=rasbora_minio_user
-      - MINIO_ROOT_PASSWORD=rasbora_minio_password
+      - MINIO_ROOT_USER=${S3_STORAGE_ACCESS_KEY_ID}
+      - MINIO_ROOT_PASSWORD=${S3_STORAGE_SECRET_ACCESS_KEY}
       - MINIO_DEFAULT_BUCKETS=rasbora-transcoder-output-video-files,rasbora-transcoder-processing-logs
 
   redis:
+    container_name: redis
     image: redis:latest
     env_file:
       - .env
     restart: always
     tty: true
-    ports:
-      - "6379:6379"
     volumes:
       - redis_data:/data
     command: "redis-server --appendonly yes"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     networks:
-      - default_network
+      - rasbora_network
 
 networks:
-  default_network:
+  rasbora_network:
     driver: bridge
 
 volumes:

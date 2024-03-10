@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -21,13 +21,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"openseawaves.com/rasbora/internal/data"
 	"os"
 	"runtime"
 	"strings"
 	"time"
 
-	"openseawaves.com/rasbora/internal/utilities"
+	"openseawave.com/rasbora/internal/data"
+
+	"openseawave.com/rasbora/internal/utilities"
 )
 
 // Levels

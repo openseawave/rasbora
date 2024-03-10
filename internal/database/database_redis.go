@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -27,9 +27,9 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
-	"openseawaves.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/logger"
 )
 
 // Create a new context based on the Background context

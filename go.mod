@@ -1,4 +1,4 @@
-module openseawaves.com/rasbora
+module openseawave.com/rasbora
 
 go 1.21
 

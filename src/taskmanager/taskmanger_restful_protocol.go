@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -27,13 +27,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/google/uuid"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
-	"openseawaves.com/rasbora/internal/database"
-	"openseawaves.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/database"
+	"openseawave.com/rasbora/internal/logger"
 
 	// Auto-generated swagger documentation
-	_ "openseawaves.com/rasbora/src/taskmanager/docs"
+	_ "openseawave.com/rasbora/src/taskmanager/docs"
 )
 
 // RestfulTaskManager hold an instance
@@ -49,9 +49,9 @@ type RestfulTaskManager struct {
 // @title Rasbora Task Manager API
 // @version 1.0
 // @description Task Manager API for Rasbora Distributed Video Transcoding.
-// @contact.name Rasbora Support
-// @contact.url	https://rasbora.openseawaves.com/support
-// @contact.email rasbora.support@openseawaves.com
+// @contact.name Rasbora
+// @contact.url	https://rasbora.openseawave.com
+// @contact.email rasbora.support@openseawave.com
 // @license.name GNU Affero General Public License
 // @license.url	http://www.gnu.org/licenses/
 // @host localhost:3701
@@ -113,11 +113,11 @@ func (rtm *RestfulTaskManager) _prepareHttpServer() {
 	// Load json errors middleware.
 	rtm.app.Use(rtm._middlewareJsonErrors)
 
-	// Add endpoint to serve swagger documentation.
-	rtm.app.Get("/swagger/*", swagger.HandlerDefault)
-
 	// Add endpoint to server creating new tasks.
 	rtm.app.Post("/v1.0/tasks/create", rtm._endpointCreateNewTask)
+
+	// Add endpoint to serve swagger documentation.
+	rtm.app.Get("/swagger/*", swagger.HandlerDefault)
 }
 
 // _middlewareJsonErrors return errors as json response.

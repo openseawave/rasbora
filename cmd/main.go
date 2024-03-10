@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -27,17 +27,17 @@ import (
 
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
-	"openseawaves.com/rasbora/internal/database"
-	"openseawaves.com/rasbora/internal/filesystem"
-	"openseawaves.com/rasbora/internal/logger"
-	"openseawaves.com/rasbora/internal/utilities"
-	"openseawaves.com/rasbora/src/callbacks"
-	"openseawaves.com/rasbora/src/heartbeat"
-	"openseawaves.com/rasbora/src/systemradar"
-	"openseawaves.com/rasbora/src/taskmanager"
-	"openseawaves.com/rasbora/src/videotranscoder"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/database"
+	"openseawave.com/rasbora/internal/filesystem"
+	"openseawave.com/rasbora/internal/logger"
+	"openseawave.com/rasbora/internal/utilities"
+	"openseawave.com/rasbora/src/callbacks"
+	"openseawave.com/rasbora/src/heartbeat"
+	"openseawave.com/rasbora/src/systemradar"
+	"openseawave.com/rasbora/src/taskmanager"
+	"openseawave.com/rasbora/src/videotranscoder"
 )
 
 var (
@@ -243,7 +243,7 @@ func initInternalConfigManager() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	l.Info(
@@ -300,7 +300,7 @@ func initInternalDatabaseConnection() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	dbType := cfg.GetString("Database.Type")
@@ -374,7 +374,7 @@ func initInternalFileSystem() {
 				OutputWriter: os.Stdout,
 			},
 		},
-		Level: []int{1, 2, 3, 4},
+		Level: []int{1, 2, 3, 4, 5},
 	})
 
 	fileSystemType := cfg.GetString("Filesystem.Type")
@@ -412,7 +412,7 @@ func initInternalFileSystem() {
 		fs = filesystem.NewFileSystem(&filesystem.ObjectFileSystem{
 			Minio: minioClient,
 		})
-
+        
 		_, err = minioClient.ListBuckets(ctx)
 		if err != nil {
 			l.Error(

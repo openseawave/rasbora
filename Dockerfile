@@ -14,6 +14,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ARG FFMPEG_ENGINE_IMAGE=jrottenberg/ffmpeg:4.4-alpine
 
 FROM golang:1.22 AS builder
