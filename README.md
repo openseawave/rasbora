@@ -17,6 +17,7 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 ## Prerequisites
 
 Here is what you need to be able to run Rasbora.
+
     Git (Version: >=2.x.x)
     Docker Compose (Version: >=2.24.x)
     Docker (Version: >=25.x.x)
