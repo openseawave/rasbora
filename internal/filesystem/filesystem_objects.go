@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 OpenSeaWaves.com/Rasbora
+// Copyright (c) 2022-2023 https://rasbora.openseawave.com
 //
 // This file is part of Rasbora Distributed Video Transcoding
 //
@@ -19,10 +19,11 @@ package filesystem
 
 import (
 	"context"
+
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
-	"openseawaves.com/rasbora/internal/config"
-	"openseawaves.com/rasbora/internal/data"
+	"openseawave.com/rasbora/internal/config"
+	"openseawave.com/rasbora/internal/data"
 )
 
 // Create a new context based on the Background context

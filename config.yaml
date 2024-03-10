@@ -1,3 +1,20 @@
+# Copyright (c) 2022-2023 https://rasbora.openseawave.com
+#
+# This file is part of Rasbora Distributed Video Transcoding
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 # Logging configuration
 Logger:
   # Unique identifier for the logger
@@ -7,10 +24,10 @@ Logger:
   # Available output types [stdout, database, file]
   Output: ["stdout", "database", "file"]
 
-# Available components [VideoTranscoding, TaskManagement, CallbackManager, Heartbeat, SystemRadar]
+# Available components [VideoTranscoding, TaskManagement, CallbackManager, SystemRadar]
 Components:
   # List of active components
-  Active: ["VideoTranscoding", "TaskManagement", "Heartbeat", "CallbackManager", "SystemRadar"]
+  Active: ["VideoTranscoding", "TaskManagement", "CallbackManager", "SystemRadar"]
 
   # VideoTranscoding component configuration
   VideoTranscoding:
@@ -19,7 +36,7 @@ Components:
     # Interval for checking new tasks (unit in seconds)
     CheckNewTaskInterval: 5
     # Number of retries before marking a task as failed
-    MakeAsFailedAfterRetry: 2
+    MakeAsFailedAfterRetry: 3
     # Name of the queue associated with this component
     Queue: "video_transcoder"
     Engine:
@@ -33,7 +50,8 @@ Components:
         Handlers:
           # List of handlers for different scenarios
           - "rasbora:/default.handler"
-          - "custom:/etc/rasbora/handlers/gpu_nivida_h264_cudia.handler"
+          # Example: if you have a custom handler for GPU-accelerated transcoding
+          # - "custom:/etc/rasbora/handlers/gpu_nivida_h264_cudia.handler"
 
   # TaskManagement component configuration
   TaskManagement:
@@ -62,11 +80,6 @@ Components:
       # Timeout for sending HTTP requests
       SendingTimeout: 15
 
-  # Heartbeat component configuration
-  Heartbeat:
-    # Interval for sending heartbeats
-    SendInterval: 60
-
   # SystemRadar component configuration
   SystemRadar:
     # Unique identifier for this component
@@ -75,6 +88,13 @@ Components:
     ScanInterval: 60
     # Disk to monitor
     DiskStat: "/"
+
+# Heartbeat configuration
+Heartbeat:
+  # Enable or disable heartbeat
+  Enabled: true
+  # Interval for sending heartbeats
+  SendInterval: 60
 
 # Available database types [Redis]
 Database:

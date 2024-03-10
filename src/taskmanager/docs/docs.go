@@ -11,8 +11,8 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "contact": {
             "name": "Rasbora Support",
-            "url": "https://rasbora.openseawaves.com/support",
-            "email": "rasbora.support@openseawaves.com"
+            "url": "https://rasbora.openseawave.com",
+            "email": "rasbora.support@openseawave.com"
         },
         "license": {
             "name": "GNU Affero General Public License",
@@ -43,7 +43,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Task"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Task"
                         }
                     }
                 ],
@@ -51,25 +51,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.Response"
+                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.Response"
                         }
                     }
                 }
@@ -77,7 +77,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "openseawaves_com_rasbora_internal_data.FileSystemType": {
+        "openseawave_com_rasbora_internal_data.FileSystemType": {
             "type": "string",
             "enum": [
                 "LocalStorage",
@@ -88,7 +88,7 @@ const docTemplate = `{
                 "ObjectFileSystemType"
             ]
         },
-        "openseawaves_com_rasbora_internal_data.Response": {
+        "openseawave_com_rasbora_internal_data.Response": {
             "type": "object",
             "properties": {
                 "error": {
@@ -100,7 +100,7 @@ const docTemplate = `{
                 "payload": {}
             }
         },
-        "openseawaves_com_rasbora_internal_data.Task": {
+        "openseawave_com_rasbora_internal_data.Task": {
             "type": "object",
             "required": [
                 "task_label",
@@ -176,7 +176,7 @@ const docTemplate = `{
                                     "description": "File system type.",
                                     "allOf": [
                                         {
-                                            "$ref": "#/definitions/openseawaves_com_rasbora_internal_data.FileSystemType"
+                                            "$ref": "#/definitions/openseawave_com_rasbora_internal_data.FileSystemType"
                                         }
                                     ]
                                 }
