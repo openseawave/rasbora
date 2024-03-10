@@ -38,7 +38,7 @@ Here is what you need to be able to run Rasbora.
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/kubernetes.png?raw=true">](https://github.com/openseawave/rasbora) Kubernetes Cluster | Self-Hosted | ⬜️ In Progress  | |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/aws.png?raw=true">](https://github.com/openseawave/rasbora) AWS |EC2| ⬜️ In Progress  | |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/hetnzer.png?raw=true">](https://github.com/openseawave/rasbora) Hetnzer | Bare Metal Server| ⬜️ In Progress  | |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ovhcloud.png?raw=true">](https://github.com/openseawave/rasbora) OVHCloud | Bare Metal Server| ⬜️ In Progress | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ovhcloud.jpg?raw=true">](https://github.com/openseawave/rasbora) OVHCloud | Bare Metal Server| ⬜️ In Progress | |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/azure.png?raw=true">](https://github.com/openseawave/rasbora) Azure |VM |⬜️ In Progress  ||
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/digitalocean.png?raw=true">](https://github.com/openseawave/rasbora) Digitalocean |Droplets| ⬜️ In Progress  | |
 
