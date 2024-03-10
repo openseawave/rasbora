@@ -121,7 +121,7 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## License
 
-Copyright (c) 2022-2023 https://rasbora.openseawave.com
+Copyright (c) 2022-2023 <https://rasbora.openseawave.com>
 This file is part of Rasbora Distributed Video Transcoding
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
