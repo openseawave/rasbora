@@ -274,7 +274,7 @@ func initInternalConfigManager() {
 
 	l.Success(
 		"main.init.config",
-		"initialized successfully.",
+		"config has been initialized successfully.",
 		nil,
 	)
 
@@ -412,7 +412,7 @@ func initInternalFileSystem() {
 		fs = filesystem.NewFileSystem(&filesystem.ObjectFileSystem{
 			Minio: minioClient,
 		})
-        
+
 		_, err = minioClient.ListBuckets(ctx)
 		if err != nil {
 			l.Error(
