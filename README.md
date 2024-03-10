@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/openseawave/rasbora">
+   <img src="https://github.com/openseawave/rasbora/blob/main/docs/banner.png?raw=true" alt="Rasbora Logo">
+  </a>
+</p>
+
 # Rasbora
 
 Distributed Scalable Video Transcoding Cluster with Hardware Acceleration for Universal Playback - An affordable on-premise or self-hosted alternative to cloud transcoders like Amazon Elastic Transcoder, Google Transcoder API, Wowza, and Azure Media Services.
@@ -43,6 +49,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## Supported Storage System
 
+The supported storage systems and their current status:
+
 | Method     | Type | Supported |Status|
 |--------------|-----------|-------|----|
 | SSD/HHD     | LocalStorage |✅  Ready       |Done  |
@@ -52,11 +60,15 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## Supported Transcoder Engines
 
+The video transcoder engines that are currently supported:
+
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | ffmpeg     | ✅  Ready        |Done  |
 
 ## Supported Hardware Acceleration
+
+Rasbora's will support in future many hardware acceleration options:
 
 | Hardware     |Engine |Supported| Image | Handler | Status |
 |--------------|-------|---------|-------|---------|--------|
@@ -68,6 +80,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## Supported API Communications
 
+Communicate seamlessly with Rasbora through RESTful APIs and explore upcoming gRPC and Websocket integrations:
+
 | Method     | Type | Supported |Status|
 |--------------|-----------|-------|----|
 | Restful     | ✅  Ready| application/json        |Done  |
@@ -76,6 +90,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## Supported Callback Methods
 
+Current supported callback methods and their current status:
+
 | Protocol     | Supported | Type |Status|
 |--------------|-----------|------|-------|
 | HTTP/1.1     | ✅  Ready      | application/json |Done  |
@@ -83,6 +99,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 | Websocket    | ⬜️        | application/json |In Progress  |
 
 ## Supported Queue/Database Systems
+
+The supported queue/database systems and their current status:
 
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
@@ -94,6 +112,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 
 ## Supported Log Collectors
 
+Manage and analyze your logs with Rasbora, we will supporting various log collectors such as Logstash, Grafana Loki, and more:
+
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | STDOUT     | ✅   Ready      |Done  |
@@ -104,6 +124,8 @@ Note: Please ensure that Docker Compose is installed on your system before runni
 | Logwatch | ⬜️ |In Progress|
 
 ## Supported Monitoring Methods
+
+The supported monitoring methods and their current status:
 
 | Method    | Supported |Status|
 |--------------|-----------|-------|
