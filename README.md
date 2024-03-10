@@ -55,8 +55,8 @@ The supported storage systems and their current status:
 |--------------|-----------|-------|----|
 | SSD/HHD     | LocalStorage |✅  Ready       |Done  |
 | S3/Ceph     | ObjectStorage |✅  Ready        |Done  |
-| Gluster    | Network | ⬜️ | In Progress |
-| FreeNAS | Network| ⬜️ | In Progress |
+| Gluster    | Network | ⬜️ In Progress | In Progress |
+| FreeNAS | Network| ⬜️ In Progress | In Progress |
 
 ## Supported Transcoder Engines
 
@@ -65,7 +65,7 @@ The video transcoder engines that are currently supported:
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ffmpeg.png?raw=true">](https://ffmpeg.org/ffmpeg.html) ffmpeg     | ✅  Ready        |Done  |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/gstreamer.png?raw=true">](https://gstreamer.freedesktop.org/documentation/tutorials/index.html?gi-language=c) gstreamer | ⬜️ | In Progress |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/gstreamer.png?raw=true">](https://gstreamer.freedesktop.org/documentation/tutorials/index.html?gi-language=c) gstreamer | ⬜️In Progress | In Progress |
 
 ## Supported Hardware Acceleration
 
@@ -74,10 +74,10 @@ Rasbora's will support in future many hardware acceleration options:
 | Hardware     |Engine |Supported| Image | Handler | Status |
 |--------------|-------|---------|-------|---------|--------|
 | CPU/x86-64| ffmpeg | ✅  Ready|jrottenberg/ffmpeg:4.4-alpine | src/videotranscoder/handlers/default.handler | Done |
-| CPU/ARM64 | ffmpeg | ⬜️ | In Progress| In Progress | In Progress |
-| GPU/Apple Silicon| ffmpeg | ⬜️ | In Progress | In Progress | In Progress |
-| GPU/Nvidia| ffmpeg | ⬜️ | In Progress | In Progress | In Progress |
-| GPU/AMD| ffmpeg| ⬜️ | In Progress |  In Progress | In Progress|
+| CPU/ARM64 | ffmpeg | ⬜️In Progress | In Progress| In Progress | In Progress |
+| GPU/Apple Silicon| ffmpeg | ⬜️In Progress | In Progress | In Progress | In Progress |
+| GPU/Nvidia| ffmpeg | ⬜️In Progress | In Progress | In Progress | In Progress |
+| GPU/AMD| ffmpeg| ⬜️In Progress | In Progress |  In Progress | In Progress|
 
 ## Supported API Communications
 
@@ -108,9 +108,9 @@ The supported queue/database systems and their current status:
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/sorted-sets/) Redis     | ✅  Ready       |Done  |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/rabbitmq.png?raw=true">](https://www.rabbitmq.com/docs/queues) RabbitMQ  | ⬜️        |In Progress|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/activemq.png?raw=true">](https://activemq.apache.org/components/classic/documentation/) ActiveMQ  | ⬜️ |In Progress|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/awssqs.png?raw=true">](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) Amazon SQS| ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/rabbitmq.png?raw=true">](https://www.rabbitmq.com/docs/queues) RabbitMQ  | ⬜️In Progress        |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/activemq.png?raw=true">](https://activemq.apache.org/components/classic/documentation/) ActiveMQ  | ⬜️In Progress |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/awssqs.png?raw=true">](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) Amazon SQS| ⬜️In Progress |In Progress|
 
 ## Supported Log Collectors
 
