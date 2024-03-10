@@ -13,7 +13,7 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 | CallbackManager   | ✅ Ready   | Manage callbacks when tasks are ready or encounter issues.|
 | SystemRadar       | ✅ Ready   | Monitor and collect system status information.           |
 | HouseKeeper       | ⬜️ In Progress | Work as a supervisor to ensure tasks in the transcoder do not stack indefinitely, addressing issues in case of errors. |
-| Dashboard | ⬜️ In Progress | Centralized control plane to manage Rasbora cluster.  |
+| Dashboard | ⬜️ In Progress | Centralized control panel to manage or monitoring Rasbora cluster.  |
 
 ## Prerequisites
 
