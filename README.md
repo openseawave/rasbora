@@ -54,7 +54,7 @@ The supported storage systems and their current status:
 | Method     | Type | Supported |Status|
 |--------------|-----------|-------|----|
 | SSD/HHD     | LocalStorage |✅  Ready       |Done  |
-| S3     | ObjectStorage |✅  Ready        |Done  |
+| S3/Ceph     | ObjectStorage |✅  Ready        |Done  |
 | Gluster    | Network | ⬜️ | In Progress |
 | FreeNAS | Network| ⬜️ | In Progress |
 
@@ -64,7 +64,8 @@ The video transcoder engines that are currently supported:
 
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
-| ffmpeg     | ✅  Ready        |Done  |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ffmpeg.png?raw=true">](https://ffmpeg.org/ffmpeg.html) ffmpeg     | ✅  Ready        |Done  |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/gstreamer.png?raw=true">](https://gstreamer.freedesktop.org/documentation/tutorials/index.html?gi-language=c) gstreamer | ⬜️ | In Progress |
 
 ## Supported Hardware Acceleration
 
