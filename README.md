@@ -29,23 +29,18 @@ Here is what you need to be able to run Rasbora.
     Docker Compose (Version: >=2.24.x)
     Docker (Version: >=25.x.x)
 
-## Development (Standalone)
+## Deployment (Installation)
 
-Deploy Rasbora as standalone:
-
-```bash
-git clone https://github.com/openseawave/rasbora.git
-
-cd rasbora/
-
-# Modify the .env file to fit your system
-cp .env.example .env
-
-# Run Docker Compose
-docker-compose up -d
-```
-
-Note: Please ensure that Docker Compose is installed on your system before running the above commands.
+| Method      | Status  | Docs                                                           |
+|-------------|---------|----------------------------------------------------------------|
+| Standalone  | ✅ Ready | [Deploy Rasbora as Standalone](https://github.com/openseawave/rasbora/docs/standalone.md) |
+| Distributed Cluster on Barematel | ⬜️ In Progress | |
+| Kubrenetus | ⬜️ In Progress  | |
+| AWS EC2 | ⬜️ In Progress  | |
+| Hetnzer | ⬜️ In Progress  | |
+| OVHCloud | ⬜️ In Progress  | |
+| Azure | ⬜️ In Progress  | |
+| Digitalocean | ⬜️ In Progress  | |
 
 ## Supported Storage System
 
