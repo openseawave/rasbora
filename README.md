@@ -139,6 +139,8 @@ We offer different types of support depending on the project size. You can choos
 | Community Edition     | No limits on CE-components| Github Issues, Community Forum, Reddit, Discord| ✅ Ready      |
 | Enterprise Edition    | CE-components & EE-components | Calls, Email, Chat, Panic Button, Direct 1-to-1 Engineer| ⬜️ In Progress|
 
+To request support for the Enterprise Edition, please contact us at rasbora.enterprise@openseawave.com
+
 ## TODO
 
 ⬜️ Full Testing Coverage
