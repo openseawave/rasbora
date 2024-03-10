@@ -29,23 +29,18 @@ Here is what you need to be able to run Rasbora.
     Docker Compose (Version: >=2.24.x)
     Docker (Version: >=25.x.x)
 
-## Development (Standalone)
+## Deployment (Installation)
 
-Deploy Rasbora as standalone:
-
-```bash
-git clone https://github.com/openseawave/rasbora.git
-
-cd rasbora/
-
-# Modify the .env file to fit your system
-cp .env.example .env
-
-# Run Docker Compose
-docker-compose up -d
-```
-
-Note: Please ensure that Docker Compose is installed on your system before running the above commands.
+| Method      | Status  | Docs                                                           |
+|-------------|---------|----------------------------------------------------------------|
+| Standalone  | ✅ Ready | [Deploy Rasbora as Standalone](https://github.com/openseawave/rasbora/docs/standalone.md) |
+| Distributed Cluster on Barematel | ⬜️ In Progress | |
+| Kubrenetus | ⬜️ In Progress  | |
+| AWS EC2 | ⬜️ In Progress  | |
+| Hetnzer | ⬜️ In Progress  | |
+| OVHCloud | ⬜️ In Progress  | |
+| Azure | ⬜️ In Progress  | |
+| Digitalocean | ⬜️ In Progress  | |
 
 ## Supported Storage System
 
@@ -55,8 +50,8 @@ The supported storage systems and their current status:
 |--------------|-----------|-------|----|
 | SSD/HHD     | LocalStorage |✅  Ready       |Done  |
 | S3/Ceph     | ObjectStorage |✅  Ready        |Done  |
-| Gluster    | Network | ⬜️ | In Progress |
-| FreeNAS | Network| ⬜️ | In Progress |
+| Gluster    | Network | ⬜️ In Progress | In Progress |
+| FreeNAS | Network| ⬜️ In Progress | In Progress |
 
 ## Supported Transcoder Engines
 
@@ -65,7 +60,7 @@ The video transcoder engines that are currently supported:
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ffmpeg.png?raw=true">](https://ffmpeg.org/ffmpeg.html) ffmpeg     | ✅  Ready        |Done  |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/gstreamer.png?raw=true">](https://gstreamer.freedesktop.org/documentation/tutorials/index.html?gi-language=c) gstreamer | ⬜️ | In Progress |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/gstreamer.png?raw=true">](https://gstreamer.freedesktop.org/documentation/tutorials/index.html?gi-language=c) gstreamer | ⬜️In Progress | In Progress |
 
 ## Supported Hardware Acceleration
 
@@ -74,10 +69,10 @@ Rasbora's will support in future many hardware acceleration options:
 | Hardware     |Engine |Supported| Image | Handler | Status |
 |--------------|-------|---------|-------|---------|--------|
 | CPU/x86-64| ffmpeg | ✅  Ready|jrottenberg/ffmpeg:4.4-alpine | src/videotranscoder/handlers/default.handler | Done |
-| CPU/ARM64 | ffmpeg | ⬜️ | In Progress| In Progress | In Progress |
-| GPU/Apple Silicon| ffmpeg | ⬜️ | In Progress | In Progress | In Progress |
-| GPU/Nvidia| ffmpeg | ⬜️ | In Progress | In Progress | In Progress |
-| GPU/AMD| ffmpeg| ⬜️ | In Progress |  In Progress | In Progress|
+| CPU/ARM64 | ffmpeg | ⬜️In Progress | In Progress| In Progress | In Progress |
+| GPU/Apple Silicon| ffmpeg | ⬜️In Progress | In Progress | In Progress | In Progress |
+| GPU/Nvidia| ffmpeg | ⬜️In Progress | In Progress | In Progress | In Progress |
+| GPU/AMD| ffmpeg| ⬜️In Progress | In Progress |  In Progress | In Progress|
 
 ## Supported API Communications
 
@@ -86,8 +81,8 @@ Communicate seamlessly with Rasbora through RESTful APIs and explore upcoming gR
 | Method     | Type | Supported |Status| Docs |
 |--------------|-----------|-------|----|-----|
 | Restful     | ✅  Ready| application/json        |Done  | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/swagger.png?raw=true">](http://localhost:3701/swagger/index.html) [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/postman.png?raw=true">](https://github.com/openseawave/rasbora/blob/main/postman.json)|
-| gRPC         | ⬜️        | application/protobuf |In Progress  |In Progress |
-| Websocket    | ⬜️        | application/json |In Progress  |In Progress |
+| gRPC         | ⬜️ In Progress       | application/protobuf |In Progress  |In Progress |
+| Websocket    | ⬜️ In Progress       | application/json |In Progress  |In Progress |
 
 Note: To access the Swagger documentation, ensure that Rasbora is running, if you change the port of Task Manager component adjust the documentation URL accordingly.
 
@@ -98,8 +93,8 @@ Current supported callback methods and their current status:
 | Protocol     | Supported | Type |Status|
 |--------------|-----------|------|-------|
 | HTTP/1.1     | ✅  Ready      | application/json |Done  |
-| gRPC         | ⬜️        | application/protobuf |In Progress |
-| Websocket    | ⬜️        | application/json |In Progress  |
+| gRPC         | ⬜️  In Progress      | application/protobuf |In Progress |
+| Websocket    | ⬜️  In Progress      | application/json |In Progress  |
 
 ## Supported Queue/Database Systems
 
@@ -108,9 +103,9 @@ The supported queue/database systems and their current status:
 | Engine     | Supported |Status|
 |--------------|-----------|-------|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/sorted-sets/) Redis     | ✅  Ready       |Done  |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/rabbitmq.png?raw=true">](https://www.rabbitmq.com/docs/queues) RabbitMQ  | ⬜️        |In Progress|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/activemq.png?raw=true">](https://activemq.apache.org/components/classic/documentation/) ActiveMQ  | ⬜️ |In Progress|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/awssqs.png?raw=true">](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) Amazon SQS| ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/rabbitmq.png?raw=true">](https://www.rabbitmq.com/docs/queues) RabbitMQ  | ⬜️In Progress        |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/activemq.png?raw=true">](https://activemq.apache.org/components/classic/documentation/) ActiveMQ  | ⬜️In Progress |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/awssqs.png?raw=true">](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) Amazon SQS| ⬜️In Progress |In Progress|
 
 ## Supported Log Collectors
 
@@ -121,9 +116,9 @@ Manage and analyze your logs with Rasbora, we will supporting various log collec
 | STDOUT     | ✅   Ready      |Done  |
 | Log Files  | ✅  Ready     |Done|
 | Database | ✅   Ready    |Done|
-| Logstash | ⬜️ |In Progress|
-| Grafana Loki| ⬜️ |In Progress|
-| Logwatch | ⬜️ |In Progress|
+| Logstash | ⬜️In Progress |In Progress|
+| Grafana Loki| ⬜️ In Progress|In Progress|
+| Logwatch | ⬜️ In Progress|In Progress|
 
 ## Supported Monitoring Methods
 
@@ -132,8 +127,8 @@ The supported monitoring methods and their current status:
 | Method    | Supported |Status|
 |--------------|-----------|-------|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/streams/) Redis/Streams|✅   Ready      |Done  |
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/grafana.png?raw=true">](https://grafana.com/docs/grafana/latest/) Grafana   | ⬜️ |In Progress|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/prometheus.png?raw=true">](https://prometheus.io/docs/introduction/overview/) Prometheus| ⬜️ |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/grafana.png?raw=true">](https://grafana.com/docs/grafana/latest/) Grafana   | ⬜️In Progress |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/prometheus.png?raw=true">](https://prometheus.io/docs/introduction/overview/) Prometheus| ⬜️In Progress |In Progress|
 
 ## TODO
 
