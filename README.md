@@ -31,16 +31,16 @@ Here is what you need to be able to run Rasbora.
 
 ## Deployment (Installation)
 
-| Method      | Status  | Docs                                                           |
-|-------------|---------|----------------------------------------------------------------|
-| Standalone  | ✅ Ready | [Deploy Rasbora as Standalone](https://github.com/openseawave/rasbora/docs/standalone.md) |
-| Distributed Cluster on Barematel | ⬜️ In Progress | |
-| Kubrenetus | ⬜️ In Progress  | |
-| AWS EC2 | ⬜️ In Progress  | |
-| Hetnzer | ⬜️ In Progress  | |
-| OVHCloud | ⬜️ In Progress  | |
-| Azure | ⬜️ In Progress  | |
-| Digitalocean | ⬜️ In Progress  | |
+| Method      | Type |Status  | Docs                                                           |
+|-------------|-------|---------|----------------------------------------------------------------|
+| Standalone   |Self-Hosted| ✅ Ready | [Deploy Rasbora as Standalone](https://github.com/openseawave/rasbora/blob/main/docs/standalone.md) |
+| Distributed Cluster Bare Metal |Self-Hosted| ⬜️ In Progress | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/kubernetes.png?raw=true">](https://github.com/openseawave/rasbora) Kubernetes Cluster | Self-Hosted | ⬜️ In Progress  | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/aws.png?raw=true">](https://github.com/openseawave/rasbora) AWS |EC2| ⬜️ In Progress  | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/hetnzer.png?raw=true">](https://github.com/openseawave/rasbora) Hetnzer | Bare Metal Server| ⬜️ In Progress  | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/ovhcloud.jpg?raw=true">](https://github.com/openseawave/rasbora) OVHCloud | Bare Metal Server| ⬜️ In Progress | |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/azure.png?raw=true">](https://github.com/openseawave/rasbora) Azure |VM |⬜️ In Progress  ||
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/digitalocean.png?raw=true">](https://github.com/openseawave/rasbora) Digitalocean |Droplets| ⬜️ In Progress  | |
 
 ## Supported Storage System
 
