@@ -130,6 +130,15 @@ The supported monitoring methods and their current status:
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/grafana.png?raw=true">](https://grafana.com/docs/grafana/latest/) Grafana   | ⬜️In Progress |In Progress|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/prometheus.png?raw=true">](https://prometheus.io/docs/introduction/overview/) Prometheus| ⬜️In Progress |In Progress|
 
+## Support
+
+We offer different types of support depending on the project size. You can choose the level of support that suits your expertise and requirements:
+
+| Type                  | Limitations             | Methods                                       | Status       |
+|-----------------------|-------------------------|-----------------------------------------------|--------------|
+| Community Edition     | No limits on CE-components| Github Issues, Community Forum, Reddit, Discord| ✅ Ready      |
+| Enterprise Edition    | CE-components & EE-components | Calls, Email, Chat, Panic Button, Direct 1-to-1 Engineer| ⬜️ In Progress|
+
 ## TODO
 
 ⬜️ Full Testing Coverage
