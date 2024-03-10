@@ -12,14 +12,15 @@ Distributed Scalable Video Transcoding Cluster with Hardware Acceleration for Un
 
 The Rasboa philosophy is built on the idea of components, meaning that each part of the system can operate independently or be combined with a few others.
 
-| Name              | Status     | Responsibility                                           |
-|-------------------|------------|----------------------------------------------------------|
-| VideoTranscoding  | ✅ Ready   | Encode/decode and transcode video files.                 |
-| TaskManagement   | ✅ Ready   | Receive and manage tasks through the API protocol.        |
-| CallbackManager   | ✅ Ready   | Manage callbacks when tasks are ready or encounter issues.|
-| SystemRadar       | ✅ Ready   | Monitor and collect system status information.           |
-| HouseKeeper       | ⬜️ In Progress | Work as a supervisor to ensure tasks in the transcoder do not stack indefinitely, addressing issues in case of errors. |
-| Dashboard | ⬜️ In Progress | Centralized control panel to manage or monitoring Rasbora cluster.  |
+| Name              | Status     | Responsibility                                           | Edition|
+|-------------------|------------|----------------------------------------------------------|--------|
+| VideoTranscoding  | ✅ Ready   | Encode/decode and transcode video files.                 | Community |
+| TaskManagement   | ✅ Ready   | Receive and manage tasks through the API protocol.        | Community |
+| CallbackManager   | ✅ Ready   | Manage callbacks when tasks are ready or encounter issues.| Community |
+| SystemRadar       | ✅ Ready   | Monitor and collect system status information.           | Community |
+| HouseKeeper       | ⬜️ In Progress | Work as a supervisor to ensure tasks in the transcoder do not stack indefinitely, addressing issues in case of errors. | Enterprise |
+| Dashboard | ⬜️ In Progress | Centralized control panel to manage or monitoring Rasbora cluster.  | Enterprise |
+| SafeGuard | ⬜️ In Progress | Offers protection on all Rasbora systems, with alerts for abuse, authentication, and authorization. | Enterprise |
 
 ## Prerequisites
 
