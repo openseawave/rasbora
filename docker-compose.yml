@@ -1,11 +1,36 @@
-version: "3.9"
+# Copyright (c) 2022-2023 https://rasbora.openseawave.com
+#
+# This file is part of Rasbora Distributed Video Transcoding
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+version: "3.7"
 name: "rasbora"
 services:
 
   rasbora:
-    restart: unless-stopped
-    build: .
+    container_name: rasbora
+    restart: always
+    build:
+      context: .
+      args:
+        FFMPEG_ENGINE_IMAGE: ${VIDEO_TRANSCODER_IMAGE}
+    image: openseawave/rasbora-ce:latest
     tty: true
+    depends_on:
+      - redis
+      - minio
     ports:
       - "3701:3701"
     volumes:
@@ -13,18 +38,64 @@ services:
     networks:
       - default_network
     environment:
-      - RASBORA_DATABASE_REDIS_CONNECTION_ADDRESS=redis:6379
-      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ENDPOINT=minio:9000
-      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ACCESSKEYID=rasbora_minio_user
-      - RASBORA_FILESYSTEM_OBJECTSTORAGE_SECRETACCESSKEY=rasbora_minio_password
-      - RASBORA_COMPONENTS_VIDEOTRANSCODING_ENGINE_FFMPEG_EXECUTABLE=/usr/bin/ffmpeg
+      # All configurations are set in .env file will override the default configurations in config.yaml.
+      # License Configuration
+      - RASBORA_LICENSE_TYPE=${LICENSE_TYPE}
+      - RASBORA_LICENSE_KEY=${LICENSE_KEY}
+      # Logger Configuration
+      - RASBORA_LOGGER_UNIQUEID=${LOGGER_UNIQUE_ID}
+      - RASBORA_LOGGER_LEVEL=${LOGGER_LEVEL}
+      - RASBORA_LOGGER_OUTPUT=${LOGGER_OUTPUT}
+      # Active Components
+      - RASBORA_COMPONENTS_ACTIVE=${ACTIVE_COMPONENTS}
+      # Video Transcoder Component
+      - RASBORA_COMPONENTS_VIDEOTRANSCODING_UNIQUEID=${VIDEO_TRANSCODER_UNIQUE_ID}
+      - RASBORA_COMPONENTS_VIDEOTRANSCODING_ENGINE_FFMPEG_TYPE=${VIDEO_TRANSCODER_ENGINE}
+      - RASBORA_COMPONENTS_VIDEOTRANSCODING_CHECKNEWTASKINTERVAL=${VIDEO_TRANSCODER_CHECK_NEW_TASK_INTERVAL}
+      - RASBORA_COMPONENTS_VIDEOTRANSCODING_MAKEASFAILEDAFTERRETRY=${VIDEO_TRANSCODER_MAKE_AS_FAILED_AFTER_RETRY}
+      # Task Management Component
+      - RASBORA_COMPONENTS_TASKMANAGEMENT_UNIQUEID=${TASK_MANAGEMENT_UNIQUE_ID}
+      - RASBORA_COMPONENTS_TASKMANAGEMENT_ACTIVE=${TASK_MANAGEMENT_PROTOCOL}
+      - RASBORA_COMPONENTS_TASKMANAGEMENT_PROTOCOLS_RESTFUL_LISTENADDRESS=${TASK_MANAGEMENT_RESTFUL_LISTEN_PORT}
+      # Callback Manager Component
+      - RASBORA_COMPONENTS_CALLBACKMANAGER_UNIQUEID=${CALLBACK_MANAGER_UNIQUE_ID}
+      - RASBORA_COMPONENTS_CALLBACKMANAGER_ACTIVE=${CALLBACK_MANAGER_PROTOCOL}
+      - RASBORA_COMPONENTS_CALLBACKMANAGER_CHECKNEWCALLBACKINTERVAL=${CALLBACK_MANAGER_CHECK_NEW_CALLBACK_INTERVAL}
+      - RASBORA_COMPONENTS_CALLBACKMANAGER_MAKEASFAILEDAFTERRETRY=${CALLBACK_MANAGER_MAKE_AS_FAILED_AFTER_RETRY}
+      # Heartbeat Component
+      - RASBORA_HEARTBEAT_UNIQUEID=${HEARTBEAT_UNIQUE_ID}
+      - RASBORA_HEARTBEAT_ENABLED=${HEARTBEAT_ENABLED}
+      - RASBORA_HEARTBEAT_SENDINTERVAL=${HEARTBEAT_SEND_INTERVAL}
+      # System Radar Component
+      - RASBORA_COMPONENTS_SYSTEMRADAR_UNIQUEID=${SYSTEM_RADAR_UNIQUE_ID}
+      - RASBORA_COMPONENTS_SYSTEMRADAR_SCANINTERVAL=${SYSTEM_RADAR_SCAN_INTERVAL}
+      - RASBORA_COMPONENTS_SYSTEMRADAR_DISKSTAT=${SYSTEM_RADAR_DISK_STAT}
+      # Database Configuration
+      - RASBORA_DATABASE_TYPE=${DATABASE_TYPE}
+      - RASBORA_DATABASE_REDIS_CONNECTION_ADDRESS=${REDIS_HOST}
+      - RASBORA_DATABASE_REDIS_CONNECTION_DATABASEINDEX=${REDIS_DATABASE}
+      - RASBORA_DATABASE_REDIS_CONNECTION_PASSWORD=${REDIS_PASSWORD}
+      # Filesystem Configuration
+      - RASBORA_FILESYSTEM_TYPE=${FILESYSTEM_TYPE}
+      # Local Filesystem Configuration
+      - RASBORA_FILESYSTEM_LOCALSTORAGE_FOLDERS_LOGGERFILEPATH=${LOCAL_STORAGE_LOGGER_FILE_PATH}
+      - RASBORA_FILESYSTEM_LOCALSTORAGE_FOLDERS_TEMPORARYWORKINGPATH=${LOCAL_STORAGE_TEMPORARY_WORKING_PATH}
+      - RASBORA_FILESYSTEM_LOCALSTORAGE_FOLDERS_TRANSCODERPROCESSINGLOGS=${LOCAL_STORAGE_TRANSCODER_PROCESSING_LOGS}
+      - RASBORA_FILESYSTEM_LOCALSTORAGE_FOLDERS_TRANSCODEROUTPUTVIDEOS=${LOCAL_STORAGE_TRANSCODER_OUTPUT_VIDEO_PATH}
+      # S3 Object Storage Configuration
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ENDPOINT=${S3_STORAGE_ENDPOINT}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_USESSL=${S3_STORAGE_USE_SSL}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_SIGNATURE=${S3_STORAGE_SIGNATURE_VERSION}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_ACCESSKEYID=${S3_STORAGE_ACCESS_KEY_ID}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_SECRETACCESSKEY=${S3_STORAGE_SECRET_ACCESS_KEY}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_BUCKET_TRANSCODERPROCESSINGLOGS=${S3_STORAGE_BUCKET_TRANSCODER_PROCESSING_LOGS}
+      - RASBORA_FILESYSTEM_OBJECTSTORAGE_BUCKET_TRANSCODEROUTPUTVIDEOS=${S3_STORAGE_BUCKET_TRANSCODER_OUTPUT_VIDEO}
 
   minio:
     image: bitnami/minio:latest
-    restart: unless-stopped
-    ports:
-      - "9000:9000"
-      - "9001:9001"
+    restart: always
+    env_file:
+      - .env
     networks:
       - default_network
     volumes:
@@ -38,7 +109,9 @@ services:
 
   redis:
     image: redis:latest
-    restart: unless-stopped
+    env_file:
+      - .env
+    restart: always
     tty: true
     ports:
       - "6379:6379"
