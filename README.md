@@ -23,6 +23,16 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 | SafeGuard | ⬜️ In Progress | Offers protection on all Rasbora systems, with alerts for abuse, authentication, and authorization. | Enterprise |
 | CrashReporter | ⬜️ In Progress| Reporting crash details and performance alerts in the event of system crashes.| Enterprise |
 
+## Transcoding Strategies
+
+Currently, we are focused on developing support for various encode/decode strategies tailored to different workload needs:
+
+| Name             | Status          | Responsibility                                                                   | Edition   |
+|------------------|-----------------|----------------------------------------------------------------------------------|-----------|
+| A-Z/File         | ✅ Ready        | Processes a single video file, decoding and encoding the entire file to produce multiple quality versions.                         | Community |
+| S-C/File         | ⬜️ In Progress  | Divides video files into small chunks; multiple instances of VideoTranscoding work on different chunks, later reassembling them into one video file with multiple qualities. | Enterprise |
+| F-F/File         | ⬜️ In Progress  | Analyzes video files and generates frames; each VideoTranscoding instance works on frames, later reassembling them into a video file with multiple qualities. | Enterprise |
+
 ## Prerequisites
 
 Here is what you need to be able to run Rasbora.
