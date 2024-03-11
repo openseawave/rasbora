@@ -21,6 +21,7 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 | HouseKeeper       | ⬜️ In Progress | Work as a supervisor to ensure tasks in the transcoder do not stack indefinitely, addressing issues in case of errors. | Enterprise |
 | Dashboard | ⬜️ In Progress | Centralized control panel to manage or monitoring Rasbora cluster.  | Enterprise |
 | SafeGuard | ⬜️ In Progress | Offers protection on all Rasbora systems, with alerts for abuse, authentication, and authorization. | Enterprise |
+| CrashReporter | ⬜️ In Progress| Reporting crash details and performance alerts in the event of system crashes.| Enterprise |
 
 ## Prerequisites
 
@@ -120,6 +121,15 @@ Manage and analyze your logs with Rasbora, we will supporting various log collec
 | Logstash | ⬜️In Progress |In Progress|
 | Grafana Loki| ⬜️ In Progress|In Progress|
 | Logwatch | ⬜️ In Progress|In Progress|
+
+## Supported Crash Reporting Methods
+
+The current supported crash methods and their status:
+
+| Method    | Supported |Status|
+|--------------|-----------|-------|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/sentry.png?raw=true">](https://github.com/openseawave/Rasbora) Sentry| ⬜️In Progress |In Progress|
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/datadog.jpg?raw=true">](https://github.com/openseawave/Rasbora) Datadog| ⬜️In Progress |In Progress|
 
 ## Supported Monitoring Methods
 
