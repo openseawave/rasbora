@@ -262,6 +262,7 @@ func initInternalConfigManager() {
 	_viper.AddConfigPath("/etc/rasbora/")
 	_viper.AddConfigPath("./")
 	_viper.SetEnvKeyReplacer(strings.NewReplacer(`.`, `_`))
+	_viper.AllowEmptyEnv(true)
 
 	// Attempt to read the configuration file
 	if err := _viper.ReadInConfig(); err != nil {

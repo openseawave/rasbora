@@ -17,7 +17,9 @@
 
 package config
 
-import "github.com/spf13/viper"
+import (
+	"github.com/spf13/viper"
+)
 
 // ViperConfigManager holds an instance
 type ViperConfigManager struct {
@@ -26,12 +28,20 @@ type ViperConfigManager struct {
 
 // GetIntSlice get list of int values by config key
 func (v *ViperConfigManager) GetIntSlice(key string) []int {
-	return v.Viper.GetIntSlice(key)
+	var _value []int
+	if err := v.Viper.UnmarshalKey(key, &_value); err != nil {
+		return []int{}
+	}
+	return _value
 }
 
 // GetStringSlice get list of strings values by config key
 func (v *ViperConfigManager) GetStringSlice(key string) []string {
-	return v.Viper.GetStringSlice(key)
+	var _value []string
+	if err := v.Viper.UnmarshalKey(key, &_value); err != nil {
+		return []string{}
+	}
+	return _value
 }
 
 // GetString get string value by config key
