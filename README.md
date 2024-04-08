@@ -29,9 +29,9 @@ Currently, we are focused on developing support for various encode/decode strate
 
 | Name             | Status          | Strategy                                                                   | Edition   |
 |------------------|-----------------|----------------------------------------------------------------------------------|-----------|
-| A-Z/File         | ✅ Ready        | Processes a single video file, decoding and encoding the entire file to produce multiple quality versions.                         | Community |
-| S-C/File         | ⬜️ In Progress  | Divides video files into small chunks; multiple instances of VideoTranscoding work on different chunks, later reassembling them into one video file with multiple qualities. | Enterprise |
-| F-F/File         | ⬜️ In Progress  | Analyzes video files and generates frames; each VideoTranscoding instance works on frames, later reassembling them into a video file with multiple qualities. | Enterprise |
+| A-Z/V         | ✅ Ready        | Processes a single video file, decoding and encoding the entire file to produce multiple quality versions.                         | Community |
+| S-C/V         | ⬜️ In Progress  | Divides video files into small chunks; multiple instances of VideoTranscoding work on different chunks, later reassembling them into one video file with multiple qualities. | Enterprise |
+| F-F/V         | ⬜️ In Progress  | Analyzes video files and generates frames; each VideoTranscoding instance works on frames, later reassembling them into a video file with multiple qualities. | Enterprise |
 
 ## Prerequisites
 
