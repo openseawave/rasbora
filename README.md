@@ -20,7 +20,7 @@ The Rasboa philosophy is built on the idea of components, meaning that each part
 | SystemRadar       | ✅ Ready   | Monitor and collect system status information.           | Community |
 | HouseKeeper       | ⬜️ In Progress | Work as a supervisor to ensure tasks in the transcoder do not stack indefinitely, addressing issues in case of errors. | Enterprise |
 | Dashboard | ⬜️ In Progress | Centralized control panel to manage or monitoring Rasbora cluster.  | Enterprise |
-| SafeGuard | ⬜️ In Progress | Offers protection on all Rasbora systems, with alerts for abuse, authentication, and authorization. | Enterprise |
+| SafeGuard | ⬜️ In Progress | Offers protection on all Rasbora systems, with alerts for abuse, authentication, permissions, and authorization. | Enterprise |
 | CrashReporter | ⬜️ In Progress| Reporting crash details and performance alerts in the event of system crashes.| Enterprise |
 
 ## Transcoding Strategies
