@@ -183,7 +183,7 @@ To request support for the Enterprise Edition, please contact us at rasbora.ente
 ## License
 Kindly ensure to review our license page at https://rasbora.openseawave.com/license as well.
 
-Copyright (c) 2022-2023 <https://rasbora.openseawave.com>
+Copyright (c) 2023-2024 <https://rasbora.openseawave.com>
 This file is part of Rasbora Distributed Video Transcoding
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
