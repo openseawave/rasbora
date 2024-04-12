@@ -4,6 +4,15 @@
   </a>
 </p>
 
+<p align="center">
+    <a href="https://rasbora.openseawave.com/"><b>Website</b></a> •
+    <a href="https://discord.com/invite/xevmJcDPKH"><b>Discord</b></a> •
+    <a href="https://www.linkedin.com/company/openseawave"><b>Linkedin</b></a> •
+    <a href="https://twitter.com/openseawave"><b>Twitter</b></a> •
+    <a href="https://www.reddit.com/r/openseawave/"><b>Reddit</b></a> •
+    <a href="https://github.com/orgs/openseawave/projects/1"><b>Roadmap</b></a>
+</p>
+
 # Rasbora
 
 Distributed Scalable Video Transcoding Cluster with Hardware Acceleration for Universal Playback - An affordable on-premise or self-hosted alternative to cloud transcoders like Amazon Elastic Transcoder, Google Transcoder API, Wowza, and Azure Media Services.
