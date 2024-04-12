@@ -181,6 +181,7 @@ To request support for the Enterprise Edition, please contact us at rasbora.ente
 ⬜️ Q/A Documentation Site
 
 ## License
+Kindly ensure to review our license page at https://rasbora.openseawave.com/license as well.
 
 Copyright (c) 2022-2023 <https://rasbora.openseawave.com>
 This file is part of Rasbora Distributed Video Transcoding
