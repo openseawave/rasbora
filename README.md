@@ -11,6 +11,7 @@
     <a href="https://twitter.com/openseawave"><b>Twitter</b></a> •
     <a href="https://www.reddit.com/r/openseawave/"><b>Reddit</b></a> •
     <a href="https://github.com/orgs/openseawave/projects/1"><b>Roadmap</b></a>
+    <a href="https://github.com/openseawave/rasbora/discussions"><b>Community</b></a>
 </p>
 
 # Rasbora
