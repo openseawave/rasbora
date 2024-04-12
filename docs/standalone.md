@@ -9,7 +9,7 @@ cd rasbora/
 
 # Modify the .env file to fit your system
 # Also you will need to get your license key from our website
-# [https://rasbora.openseawave.com/](https://rasbora.openseawave.com/license)
+# https://rasbora.openseawave.com/license
 
 cp .env.example .env
 
