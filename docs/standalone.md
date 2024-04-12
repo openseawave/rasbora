@@ -17,10 +17,4 @@ cp .env.example .env
 docker-compose up -d
 ```
 
-Update your License Key 
-https://rasbora.openseawave.com
-
-LICENSE_TYPE=community
-LICENSE_KEY=your_license_key
-
-Note: Please ensure that Docker Compose,Docker and Git is installed on your system before running the above commands.
+Note: Please ensure that you get your license key and Docker Compose,Docker and Git is installed on your system before running the above commands.
