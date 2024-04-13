@@ -14,7 +14,9 @@ cd rasbora/
 cp .env.example .env
 
 # Run Docker Compose
-docker-compose up -d
+docker compose up -d
 ```
 
-Note: Please ensure that you get your license key and Docker Compose,Docker and Git is installed on your system before running the above commands.
+Note: Please ensure that you get your license key.
+Note: Please ensure Docker Compose,Docker and Git is installed on your system before running the above commands.
+Note: Please ensure that your firewall allows traffic through port 3701.
