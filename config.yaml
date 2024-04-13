@@ -50,7 +50,7 @@ Components:
         # Path to the FFmpeg executable
         Executable: "/usr/local/bin/ffmpeg"
         # Address for progress monitoring
-        ProgressListener: ":7701"
+        ProgressListener: "localhost:7701"
         Handlers:
           # List of handlers for different scenarios
           - "rasbora:/default.handler"
