@@ -43,6 +43,8 @@ Components:
     MakeAsFailedAfterRetry: 3
     # Name of the queue associated with this component
     Queue: "video_transcoder"
+    # Shell for executing transcoding commands
+    Shell: "/bin/sh"
     Engine:
       # Type of transcoding engine
       Type: "ffmpeg"
