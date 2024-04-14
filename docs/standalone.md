@@ -1,4 +1,4 @@
-# Development (Standalone)
+# Deploy Rasbora (Standalone) Using Docker Compose
 
 Deploy Rasbora as standalone:
 
