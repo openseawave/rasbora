@@ -55,7 +55,8 @@ Here is what you need to be able to run Rasbora.
 
 | Method      | Type |Status  | Docs                                                           |
 |-------------|-------|---------|----------------------------------------------------------------|
-| Standalone (Docker Compose)   |Self-Hosted| ✅ Ready | [Deploy Rasbora as Standalone](https://github.com/openseawave/rasbora/blob/main/docs/standalone.md) |
+| Standalone (Build From Source)   |Self-Hosted| ⬜️ In Progress |  |
+| Standalone (Docker Compose)   |Self-Hosted| ✅ Ready | [Deploy Rasbora Standalone Using Docker Compose](https://github.com/openseawave/rasbora/blob/main/docs/standalone.md) |
 | Distributed Cluster Bare Metal |Self-Hosted| ⬜️ In Progress | |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/kubernetes.png?raw=true">](https://github.com/openseawave/rasbora) Kubernetes Cluster | Self-Hosted | ⬜️ In Progress  | |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/aws.png?raw=true">](https://github.com/openseawave/rasbora) AWS |EC2| ⬜️ In Progress  | |
