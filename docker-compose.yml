@@ -97,6 +97,9 @@ services:
     container_name: minio
     image: bitnami/minio:latest
     restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
     env_file:
       - .env
     networks:
@@ -117,13 +120,22 @@ services:
       - .env
     restart: always
     tty: true
+    ports:
+      - "6379:6379"
     volumes:
       - redis_data:/data
-    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "2048mb", "--maxmemory-policy", "allkeys-lru"] 
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "2048mb", "--maxmemory-policy", "allkeys-lru"]
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     networks:
       - rasbora_network
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - "5540:5540"
+    volumes:
+      - insight_data:/data
 
 networks:
   rasbora_network:
@@ -133,4 +145,6 @@ volumes:
   redis_data:
     driver: local
   minio_data:
+    driver: local
+  insight_data:
     driver: local
