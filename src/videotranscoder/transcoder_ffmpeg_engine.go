@@ -578,7 +578,7 @@ func (fte *FfmpegTranscoderEngine) _transcodingInputVideoFile() (err error) {
 	)
 
 	// execute ffmpeg handler and start ffmpeg processing events listener server
-	cmd := exec.Command("bash", "-c", ffmpegHandlerCmd)
+	cmd := exec.Command(fte.Config.GetString("Components.VideoTranscoding.Shell"), "-c", ffmpegHandlerCmd)
 	monitor := NewFfmpegProgressingMonitor(*fte)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
