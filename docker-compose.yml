@@ -119,7 +119,7 @@ services:
     tty: true
     volumes:
       - redis_data:/data
-    command: "redis-server --appendonly yes"
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "2048mb", "--maxmemory-policy", "allkeys-lru"] 
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     networks:
