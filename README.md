@@ -160,7 +160,7 @@ The supported monitoring methods and their current status:
 
 | Method    | Supported |Status|
 |--------------|-----------|-------|
-| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/streams/) Redis/Streams|✅   Yes      |Done  |
+| [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/redis.png?raw=true">](https://redis.io/docs/data-types/streams/) Redis/Streams|✅   Yes      |✅ Done  |
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/grafana.png?raw=true">](https://grafana.com/docs/grafana/latest/) Grafana   | ⬜️ In Progress |⬜️ In Progress|
 | [<img width="44" height="44" src="https://github.com/openseawave/rasbora/blob/main/docs/prometheus.png?raw=true">](https://prometheus.io/docs/introduction/overview/) Prometheus| ⬜️ In Progress |⬜️ In Progress|
 
