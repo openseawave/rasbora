@@ -71,7 +71,7 @@ The supported storage systems and their current status:
 
 | Method     | Type | Supported |Status|
 |--------------|-----------|-------|----|
-| SSD/HHD     | LocalStorage |✅  Yes       |✅ Done  |
+| SSD/HDD     | LocalStorage |✅  Yes       |✅ Done  |
 | S3/Ceph     | ObjectStorage |✅  Yes        |✅ Done  |
 | Gluster    | Network | ⬜️ In Progress | ⬜️ In Progress |
 | FreeNAS | Network| ⬜️ In Progress | ⬜️ In Progress |
